@@ -201,4 +201,27 @@ spec:
       }
     }
   }
+
+  post {
+    success {
+      container('gradle') {
+          sh """
+              curl -H "Content-Type: application/json" \
+                    -X POST \
+                    -d '{"content":"프론트엔드 빌드 성공: ${env.BUILD_NUMBER}"}' \
+                    DISCORD_WEBHOOK_URL_REDACTED
+          """
+      }
+    }
+    failure {
+      container('gradle') {
+          sh """
+              curl -H "Content-Type: application/json" \
+                    -X POST \
+                    -d '{"content":"프론트엔드 빌드 실패: ${env.BUILD_NUMBER}"}' \
+                    DISCORD_WEBHOOK_URL_REDACTED
+          """
+      }
+    }
+  }
 }
