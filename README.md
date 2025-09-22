@@ -91,7 +91,7 @@
 1. **코드 변경 및 Push/Merge**
    - 백엔드 소스코드를 GitHub 원격 저장소에 Push하거나 main 브랜치에 Merge합니다.
    - GitHub WebHook 이벤트가 발생하면 Jenkins 파이프라인이 자동으로 실행됩니다.
-   - 
+     
 2. **Jenkins Pipeline 실행**
    - Git Clone: Jenkins가 GitHub 저장소에서 최신 코드를 가져옵니다.
    - Gradle 빌드: ./gradlew clean bootJar 실행, JAR 산출물(build/libs/*.jar) 생성
@@ -194,6 +194,7 @@ HTTPS 인증서를 적용하지 않았지만, 추후 서비스를 정식으로 �
 <br>
 
 ---
+
 
 
 
