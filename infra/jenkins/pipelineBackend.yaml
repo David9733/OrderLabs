@@ -79,7 +79,6 @@ spec:
               --context=${WORKSPACE} \
               --dockerfile=${WORKSPACE}/Dockerfile \
               --destination=${IMAGE_NAME}:${IMAGE_TAG} \
-              --destination=${IMAGE_NAME}:1 \
               --single-snapshot \
               --use-new-run \
               --cache=true \

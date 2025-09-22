@@ -16,10 +16,10 @@ spec:
         version: green
     spec:
       nodeSelector:
-        kubernetes.io/hostname: worker14
+        kubernetes.io/hostname: worker15
       containers:
         - name: backend
-          image: hanwhabootcamp17/orderlabs-backend:1
+          image: hanwhabootcamp17/orderlabs-backend:${BUILD_NUMBER}
           ports:
             - containerPort: 8080
           envFrom:

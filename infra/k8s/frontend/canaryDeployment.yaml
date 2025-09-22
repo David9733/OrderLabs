@@ -16,10 +16,10 @@ spec:
         role: stable
     spec:
       nodeSelector:
-        kubernetes.io/hostname: worker14   # ✅ worker14에만 실행
+        kubernetes.io/hostname: worker15   # ✅ worker14에만 실행
       containers:
         - name: frontend
-          image: hanwhabootcamp17/orderlabs-frontend:1
+          image: hanwhabootcamp17/orderlabs-frontend:${BUILD_NUMBER}
           ports:
             - containerPort: 80
 ---
@@ -41,9 +41,9 @@ spec:
         role: canary
     spec:
       nodeSelector:
-        kubernetes.io/hostname: worker14   # ✅ worker14에만 실행
+        kubernetes.io/hostname: worker15   # ✅ worker14에만 실행
       containers:
         - name: frontend
-          image: hanwhabootcamp17/orderlabs-frontend:latest
+          image: hanwhabootcamp17/orderlabs-frontend:${BUILD_NUMBER}
           ports:
             - containerPort: 80
