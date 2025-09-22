@@ -62,6 +62,18 @@
 
 <br><br>
 
+## 🎬 CI/CD 파이프라인 흐름 및 시나리오
+
+이번  CI/CD 프로젝트에서는 쿠버네티스 클러스터 위에 Jenkins를 구축함.(고칠거임)
+
+프론트: 소스코드 git에 Push/Merge→ Jenkins Pipe line ->  Node 빌드 (npm install && npm run build)→ 정적 산출물 생성 (dist/)→ Kaniko 빌드 (Nginx 베이스 Dockerfile, Kaniko)→ Docker Hub에 이미지 푸시→ 쿠버네티스 배포 (Deployment & Ingress)→ Canary 배포 검증 (20% → 100%)→ UI 확인을 통한 사용자 경험 검증을 통한 서비스 제공
+
+백엔드: 소스코드  git에 Push/Merge → Jenkins Pipe line -> Gradle 빌드 (./gradlew clean bootJar) → JAR 산출물 생성 (build/libs/*.jar) → Docker 이미지 빌드 (JRE 베이스 Dockerfile, Kaniko) →  Docker Hub에 이미지 푸시 → 쿠버네티스 배포 (Blue-Green 전략 적용) → Readiness/Liveness Probe 검증 → 사용자에게 일관적 서비스 제공
+
+<br>
+
+<br><br>
+
 
 ## ✔️ CI/CD 배포 방식 선택 배경
 
@@ -103,9 +115,9 @@ GitHub Actions도 처음에 고려하였지만, 대규모 프로젝트로 확장
 
 Jenkins를 활용하면 **다양한 브랜치 전략을 유연하게 적용**할 수 있어 기능 단위 배포와 긴급 핫픽스 대응이 가능해집니다. 
 
-또한 Docker 기반의 배포 자동화를 통해 개발 환경과 운영 환경 간의 일관성을 보장하고, 잦은 업데이트 상황에서도 안정성을 유지할 수 있습니다. 
+또한 Docker 기반의 배포 자동화를 통해 **개발 환경과 운영 환경 간의 일관성을 보장**하고, 잦은 업데이트 상황에서도 안정성을 유지할 수 있습니다. 
 
-더불어 품질 관리 도구와의 통합이 용이하여 배포 전에 코드 품질 검사 및 자동 검증을 사전에 수행할 수 있으며, 오픈소스 기반이라 커뮤니티와 문서가 풍부해 문제 해결과 커스터마이징에도 유리하다는 점에서 Jenkins를 선택하게 되었습니다.
+더불어 **품질 관리 도구와의 통합이 용이**하여 배포 전에 코드 품질 검사 및 자동 검증을 사전에 수행할 수 있으며, 오픈소스 기반이라 커뮤니티와 문서가 풍부해 문제 해결과 커스터마이징에도 유리하다는 점에서 Jenkins를 선택하게 되었습니다.
 
 
 
@@ -151,21 +163,8 @@ Ansible은 에이전트 설치 없이 SSH만으로 서버를 제어할 수 있�
 <br>
 
 
-
 <br><br>
 
-
-## 🎬 CI/CD 파이프라인 흐름 및 시나리오
-
-이번  CI/CD 프로젝트에서는 쿠버네티스 클러스터 위에 Jenkins를 구축함.(고칠거임)
-
-프론트: 소스코드 git에 Push/Merge→ Jenkins Pipe line ->  Node 빌드 (npm install && npm run build)→ 정적 산출물 생성 (dist/)→ Kaniko 빌드 (Nginx 베이스 Dockerfile, Kaniko)→ Docker Hub에 이미지 푸시→ 쿠버네티스 배포 (Deployment & Ingress)→ Canary 배포 검증 (20% → 100%)→ UI 확인을 통한 사용자 경험 검증을 통한 서비스 제공
-
-백엔드: 소스코드  git에 Push/Merge → Jenkins Pipe line -> Gradle 빌드 (./gradlew clean bootJar) → JAR 산출물 생성 (build/libs/*.jar) → Docker 이미지 빌드 (JRE 베이스 Dockerfile, Kaniko) →  Docker Hub에 이미지 푸시 → 쿠버네티스 배포 (Blue-Green 전략 적용) → Readiness/Liveness Probe 검증 → 사용자에게 일관적 서비스 제공
-
-<br>
-
-<br><br>
 
 
  ## 📺 CI/CD 배포 및 테스트
