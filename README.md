@@ -72,19 +72,19 @@
    - GitHub WebHook을 통해 Jenkins 파이프라인 실행이 트리거가 됩니다.
 
 2. Jenkins Pipeline 실행
-   -Git Clone: GitHub 저장소의 최신 코드를 Jenkins 워크스페이스로 가져옵니다.
-   -Node 빌드: npm install && npm run build 실행, 정적 산출물(dist/) 생성
-   -Kaniko 빌드 & Docker Hub Push: Nginx 베이스 이미지 기반 Dockerfile을 활용, Kaniko로 컨테이너 이미지를 빌드하여 Docker Hub에 Push
-   -쿠버네티스 배포: Deployment 및 Ingress 리소스 적용, 새로운 프론트엔드 버전 배포
+   - Git Clone: GitHub 저장소의 최신 코드를 Jenkins 워크스페이스로 가져옵니다.
+   - Node 빌드: npm install && npm run build 실행, 정적 산출물(dist/) 생성
+   - Kaniko 빌드 & Docker Hub Push: Nginx 베이스 이미지 기반 Dockerfile을 활용, Kaniko로 컨테이너 이미지를 빌드하여 Docker Hub에 Push
+   - 쿠버네티스 배포: Deployment 및 Ingress 리소스 적용, 새로운 프론트엔드 버전 배포
 
 3. Canary 배포 적용
-  -일부 사용자(20%)에게 먼저 배포
-  -UI 및 사용자 경험을 실제로 검증
-  -안정성이 확인되면 트래픽 100%로 확장하여 전체 사용자에게 배포
+  - 일부 사용자(20%)에게 먼저 배포
+  - UI 및 사용자 경험을 실제로 검증
+  - 안정성이 확인되면 트래픽 100%로 확장하여 전체 사용자에게 배포
 
 4. 최종 서비스 제공
-   -사용자는 무중단으로 업데이트된 UI를 경험
-   -Canary 과정에서 문제가 생기면 빠른 롤백 가능
+   - 사용자는 무중단으로 업데이트된 UI를 경험
+   - Canary 과정에서 문제가 생기면 빠른 롤백 가능
    
 1. 소스코드 git에 Push/Merge→ Jenkins Pipe line ->  Node 빌드 (npm install && npm run build)→ 정적 산출물 생성 (dist/)→ Kaniko 빌드 (Nginx 베이스 Dockerfile, Kaniko)→ Docker Hub에 이미지 푸시→ 쿠버네티스 배포 (Deployment & Ingress)→ Canary 배포 검증 (20% → 100%)→ UI 확인을 통한 사용자 경험 검증을 통한 서비스 제공
 
@@ -176,6 +176,7 @@ HTTPS 인증서를 적용하지 않았지만, 추후 서비스를 정식으로 �
 <br>
 
 ---
+
 
 
 
