@@ -58,7 +58,7 @@
 
 <br>
 
-![시스템 아키텍처](https://github.com/user-attachments/assets/1494b5ae-def8-4651-9860-0d43d639791e)
+![시스템 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
 
 <br><br>
 
@@ -150,6 +150,7 @@ Ansible은 에이전트 설치 없이 SSH만으로 서버를 제어할 수 있�
 <br>
 
 ---
+
 
 
 
