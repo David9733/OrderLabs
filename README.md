@@ -68,8 +68,8 @@
 
 프론트
 1. 코드 변경 및 Push/Merge
-   -프론트엔드 소스코드를 GitHub 원격 레포지토리에 Push하거나 main 브랜치에 Merge합니다.
-   -GitHub WebHook을 통해 Jenkins 파이프라인 실행이 트리거가 됩니다.
+   - 프론트엔드 소스코드를 GitHub 원격 레포지토리에 Push하거나 main 브랜치에 Merge합니다.
+   - GitHub WebHook을 통해 Jenkins 파이프라인 실행이 트리거가 됩니다.
 
 2. Jenkins Pipeline 실행
    -Git Clone: GitHub 저장소의 최신 코드를 Jenkins 워크스페이스로 가져옵니다.
@@ -176,6 +176,7 @@ HTTPS 인증서를 적용하지 않았지만, 추후 서비스를 정식으로 �
 <br>
 
 ---
+
 
 
 
