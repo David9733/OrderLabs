@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderlabs-backend-blue
+  namespace: orderlabs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: orderlabs-backend
+      version: blue
+  template:
+    metadata:
+      labels:
+        app: orderlabs-backend
+        version: blue
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: worker15
+      containers:
+        - name: backend
+          image: hanwhabootcamp17/orderlabs-backend:1
+          ports:
+            - containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: app-config
