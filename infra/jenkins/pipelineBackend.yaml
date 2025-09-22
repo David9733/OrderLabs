@@ -1,0 +1,141 @@
+pipeline {
+  agent {
+    kubernetes {
+      label "gradle-kaniko-${UUID.randomUUID().toString()}"
+      defaultContainer 'gradle'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  restartPolicy: Never
+  containers:
+    - name: gradle
+      image: gradle:8.9-jdk17
+      command: ['cat']
+      tty: true
+      volumeMounts:
+        - name: gradle-cache
+          mountPath: /home/gradle/.gradle
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      command: ['/busybox/sh','-c','sleep infinity']
+      tty: true
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker
+        - name: workspace
+          mountPath: /workspace
+  volumes:
+    - name: gradle-cache
+      emptyDir: {}
+    - name: workspace
+      emptyDir: {}
+    - name: docker-config
+      secret:
+        secretName: dockerhub-cred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+"""
+    }
+  }
+
+  environment {
+    IMAGE_NAME   = 'hanwhabootcamp17/orderlabs-backend'
+    IMAGE_TAG    = "${env.BUILD_NUMBER}"
+    NAMESPACE    = "orderlabs"
+    SERVICE_NAME = "orderlabs-backend"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        container('gradle') {
+          checkout([$class: 'GitSCM',
+            branches: [[name: '*/main']],
+            userRemoteConfigs: [[url: 'https://github.com/atimaby28/OrdersLabCICD_Back']]
+          ])
+        }
+      }
+    }
+
+    stage('Gradle Build') {
+      steps {
+        container('gradle') {
+          sh '''
+            chmod +x ./gradlew || true
+            ./gradlew --no-daemon clean bootJar
+            ls -lh build/libs/
+          '''
+        }
+      }
+    }
+
+    stage('Kaniko Build & Push') {
+      steps {
+        container('kaniko') {
+          sh """
+            /kaniko/executor \
+              --context=${WORKSPACE} \
+              --dockerfile=${WORKSPACE}/Dockerfile \
+              --destination=${IMAGE_NAME}:${IMAGE_TAG} \
+              --destination=${IMAGE_NAME}:1 \
+              --single-snapshot \
+              --use-new-run \
+              --cache=true \
+              --snapshotMode=redo
+          """
+        }
+      }
+    }
+
+    stage('Blue/Green Deploy') {
+      steps {
+        script {
+          sshPublisher(
+            publishers: [
+              sshPublisherDesc(
+                configName: "k8s_server",   // Jenkins에 등록된 SSH 서버 이름
+                transfers: [
+                  sshTransfer(
+                    sourceFiles: "k8s/backend-deployment.yml",
+                    remoteDirectory: "/home/test/k8s",
+                    execCommand: """
+                      CURRENT=\$(kubectl get svc ${SERVICE_NAME} -n ${NAMESPACE} -o=jsonpath='{.spec.selector.version}')
+                      echo "현재 서비스 버전: \$CURRENT"
+
+                      if [ "\$CURRENT" = "blue" ]; then
+                        TARGET="green"
+                        OLD="blue"
+                      else
+                        TARGET="blue"
+                        OLD="green"
+                      fi
+
+                      echo "새 버전을 \$TARGET에 배포합니다."
+
+                      kubectl set image deployment/${SERVICE_NAME}-\$TARGET backend=${IMAGE_NAME}:${IMAGE_TAG} -n ${NAMESPACE}
+                      kubectl scale deployment/${SERVICE_NAME}-\$TARGET --replicas=1 -n ${NAMESPACE}
+                      kubectl rollout status deployment/${SERVICE_NAME}-\$TARGET -n ${NAMESPACE}
+                      kubectl patch service ${SERVICE_NAME} -n ${NAMESPACE} -p '{"spec":{"selector":{"app":"${SERVICE_NAME}","version":"'\$TARGET'"}}}'
+                      kubectl scale deployment/${SERVICE_NAME}-\$OLD --replicas=0 -n ${NAMESPACE}
+
+                      echo "배포 완료: 서비스가 \$TARGET 버전으로 전환됨"
+                    """
+                  )
+                ],
+                verbose: true
+              )
+            ]
+          )
+        }
+      }
+    }
+
+    stage('Result') {
+      steps {
+        echo "✅ 배포 완료: ${IMAGE_NAME}:${IMAGE_TAG}"
+      }
+    }
+  }
+}

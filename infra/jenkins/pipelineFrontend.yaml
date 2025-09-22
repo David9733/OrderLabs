@@ -1,0 +1,506 @@
+pipeline {
+  agent {
+    kubernetes {
+      label "node-kaniko-${UUID.randomUUID().toString()}"
+      defaultContainer 'node'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  restartPolicy: Never
+  containers:
+    - name: node
+      image: node:22.17.1-bullseye
+      command: ['cat']
+      tty: true
+      volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      command: ['/busybox/sh','-c','sleep infinity']
+      tty: true
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker
+        - name: workspace
+          mountPath: /workspace
+  volumes:
+    - name: workspace
+      emptyDir: {}
+    - name: docker-config
+      secret:
+        secretName: dockerhub-cred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+"""
+    }
+  }
+
+  environment {
+    IMAGE_NAME   = 'hanwhabootcamp17/orderlabs-frontend'
+    IMAGE_TAG    = "${env.BUILD_NUMBER}"
+    NAMESPACE    = "orderlabs"
+    SERVICE_NAME = "orderlabs-frontend"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        container('node') {
+          checkout([$class: 'GitSCM',
+            branches: [[name: '*/main']],
+            userRemoteConfigs: [[url: 'https://github.com/atimaby28/OrdersLabCICD_Front']]
+          ])
+        }
+      }
+    }
+
+    stage('NPM Build') {
+      steps {
+        container('node') {
+          sh '''
+            npm install
+            npm run build
+            ls -lh dist/
+          '''
+        }
+      }
+    }
+
+    stage('Kaniko Build & Push') {
+      steps {
+        container('kaniko') {
+          sh """
+            /kaniko/executor \
+              --context=${WORKSPACE} \
+              --dockerfile=${WORKSPACE}/Dockerfile \
+              --destination=${IMAGE_NAME}:${IMAGE_TAG} \
+              --destination=${IMAGE_NAME}:1 \
+              --single-snapshot \
+              --use-new-run \
+              --cache=true \
+              --snapshotMode=redo
+          """
+        }
+      }
+    }
+
+    stage('Canary Deploy') {
+      steps {
+        script {
+          sshPublisher(
+            publishers: [
+              sshPublisherDesc(
+                configName: 'k8s_server',
+                verbose: true,
+                transfers: [
+                  sshTransfer(
+                    sourceFiles: 'k8s/frontend-deployment.yml',
+                    remoteDirectory: '/home/test/k8s',
+                    execCommand: """
+                      echo "프론트엔드 Canary 배포 시작"
+
+                      # 새 버전 canary 배포
+                      kubectl set image deployment/${SERVICE_NAME}-canary frontend=${IMAGE_NAME}:${IMAGE_TAG} -n ${NAMESPACE}
+                      kubectl scale deployment/${SERVICE_NAME}-canary --replicas=1 -n ${NAMESPACE}
+                      kubectl rollout status deployment/${SERVICE_NAME}-canary -n ${NAMESPACE}
+
+                      echo "서비스 트래픽의 일부를 canary 버전으로 라우팅"
+                      # 예: canary weight 20%, stable weight 80% (service selector 방식)
+                      kubectl patch service ${SERVICE_NAME} -n ${NAMESPACE} -p '{
+                        "spec": {
+                          "selector": {"app": "${SERVICE_NAME}"}
+                        }
+                      }'
+
+                      echo "배포 완료: Canary 버전 활성화됨"
+                    """
+                  )
+                ]
+              )
+            ]
+          )
+        }
+      }
+    }
+
+    stage('Result') {
+      steps {
+        echo "✅ 프론트엔드 배포 완료: ${IMAGE_NAME}:${IMAGE_TAG}"
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+===============================
+
+
+pipeline {
+  agent {
+    kubernetes {
+      label "node-kaniko-${UUID.randomUUID().toString()}"
+      defaultContainer 'node'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  restartPolicy: Never
+  containers:
+    - name: node
+      image: node:22.17.1-bullseye
+      command: ['cat']
+      tty: true
+      volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      command: ['/busybox/sh','-c','sleep infinity']
+      tty: true
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker
+        - name: workspace
+          mountPath: /workspace
+  volumes:
+    - name: workspace
+      emptyDir: {}
+    - name: docker-config
+      secret:
+        secretName: dockerhub-cred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+"""
+    }
+  }
+
+  environment {
+    IMAGE_NAME   = 'hanwhabootcamp17/orderlabs-frontend'
+    IMAGE_TAG    = "${env.BUILD_NUMBER}"
+    NAMESPACE    = "orderlabs"
+    SERVICE_NAME = "orderlabs-frontend"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        container('node') {
+          checkout([$class: 'GitSCM',
+            branches: [[name: '*/main']],
+            userRemoteConfigs: [[url: 'https://github.com/atimaby28/OrdersLabCICD_Front']]
+          ])
+        }
+      }
+    }
+
+    stage('NPM Build') {
+      steps {
+        container('node') {
+          sh '''
+            npm install
+            npm run build
+            ls -lh dist/
+          '''
+        }
+      }
+    }
+
+    stage('Kaniko Build & Push') {
+      steps {
+        container('kaniko') {
+          sh """
+            /kaniko/executor \
+              --context=${WORKSPACE} \
+              --dockerfile=${WORKSPACE}/Dockerfile \
+              --destination=${IMAGE_NAME}:${IMAGE_TAG} \
+              --single-snapshot \
+              --use-new-run \
+              --cache=true \
+              --snapshotMode=redo
+          """
+        }
+      }
+    }
+
+    stage('Canary Deploy') {
+      steps {
+        script {
+          sshPublisher(
+            publishers: [
+              sshPublisherDesc(
+                configName: 'k8s_server',
+                verbose: true,
+                transfers: [
+                  sshTransfer(
+                    sourceFiles: 'k8s/frontend-deployment.yml',
+                    remoteDirectory: '/home/test/k8s',
+                    execCommand: """
+                      echo "🚀 프론트엔드 Canary 배포 시작"
+
+                      # 새 버전 canary 배포
+                      kubectl set image deployment/${SERVICE_NAME}-canary frontend=${IMAGE_NAME}:${IMAGE_TAG} -n ${NAMESPACE}
+                      kubectl scale deployment/${SERVICE_NAME}-canary --replicas=1 -n ${NAMESPACE}
+                      kubectl rollout status deployment/${SERVICE_NAME}-canary -n ${NAMESPACE}
+
+                      echo "📌 Canary 트래픽 비율 점진적 증가"
+
+                      # Step 1: Canary 20%
+                      kubectl annotate ingress ${SERVICE_NAME}-canary-ingress \
+                        -n ${NAMESPACE} \
+                        nginx.ingress.kubernetes.io/canary-weight="20" \
+                        --overwrite
+                      sleep 30   # 모니터링 대기 (예시)
+
+                      # Step 2: Canary 50%
+                      kubectl annotate ingress ${SERVICE_NAME}-canary-ingress \
+                        -n ${NAMESPACE} \
+                        nginx.ingress.kubernetes.io/canary-weight="50" \
+                        --overwrite
+                      sleep 30   # 모니터링 대기 (예시)
+
+                      # Step 3: Canary 100% (Stable 전환)
+                      kubectl annotate ingress ${SERVICE_NAME}-canary-ingress \
+                        -n ${NAMESPACE} \
+                        nginx.ingress.kubernetes.io/canary-weight="100" \
+                        --overwrite
+
+                      echo "✅ Canary 배포 완료: 전체 트래픽이 신규 버전으로 라우팅됨"
+                    """
+                  )
+                ]
+              )
+            ]
+          )
+        }
+      }
+    }
+
+    stage('Result') {
+      steps {
+        echo "🎉 프론트엔드 배포 성공: ${IMAGE_NAME}:${IMAGE_TAG}"
+      }
+    }
+  }
+}
+
+
+====
+
+
+pipeline {
+  agent {
+    kubernetes {
+      label "node-kaniko-${UUID.randomUUID().toString()}"
+      defaultContainer 'node'
+      yaml """
+apiVersion: v1
+kind: Pod
+spec:
+  restartPolicy: Never
+  containers:
+    - name: node
+      image: node:22.17.1-bullseye
+      command: ['cat']
+      tty: true
+      volumeMounts:
+        - name: workspace
+          mountPath: /workspace
+    - name: kaniko
+      image: gcr.io/kaniko-project/executor:debug
+      command: ['/busybox/sh','-c','sleep infinity']
+      tty: true
+      volumeMounts:
+        - name: docker-config
+          mountPath: /kaniko/.docker
+        - name: workspace
+          mountPath: /workspace
+  volumes:
+    - name: workspace
+      emptyDir: {}
+    - name: docker-config
+      secret:
+        secretName: dockerhub-cred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+"""
+    }
+  }
+
+  environment {
+    IMAGE_NAME   = 'hanwhabootcamp17/orderlabs-frontend'
+    IMAGE_TAG    = "${env.BUILD_NUMBER}"
+    NAMESPACE    = "orderlabs"
+    SERVICE_NAME = "orderlabs-frontend"
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        container('node') {
+          checkout([$class: 'GitSCM',
+            branches: [[name: '*/main']],
+            userRemoteConfigs: [[url: 'https://github.com/atimaby28/OrdersLabCICD_Front']]
+          ])
+        }
+      }
+    }
+
+    stage('NPM Build') {
+      steps {
+        container('node') {
+          sh '''
+            npm install
+            npm run build
+            ls -lh dist/
+          '''
+        }
+      }
+    }
+
+    stage('Kaniko Build & Push') {
+      steps {
+        container('kaniko') {
+          sh """
+            /kaniko/executor \
+              --context=${WORKSPACE} \
+              --dockerfile=${WORKSPACE}/Dockerfile \
+              --destination=${IMAGE_NAME}:${IMAGE_TAG} \
+              --single-snapshot \
+              --use-new-run \
+              --cache=true \
+              --snapshotMode=redo
+          """
+        }
+      }
+    }
+
+    stage('Canary Deploy') {
+      steps {
+        script {
+          sshPublisher(
+            publishers: [
+              sshPublisherDesc(
+                configName: 'k8s_server',
+                verbose: true,
+                transfers: [
+                  sshTransfer(
+                    sourceFiles: 'k8s/frontend-deployment.yml',
+                    remoteDirectory: '/home/test/k8s',
+                    execCommand: """
+                      echo "🚀 프론트엔드 Canary 배포 시작"
+
+                      # 새 버전 Canary 배포
+                      kubectl set image deployment/${SERVICE_NAME}-canary frontend=${IMAGE_NAME}:${IMAGE_TAG} -n ${NAMESPACE}
+                      kubectl scale deployment/${SERVICE_NAME}-canary --replicas=1 -n ${NAMESPACE}
+                      kubectl rollout status deployment/${SERVICE_NAME}-canary -n ${NAMESPACE}
+
+                      echo "📌 Canary 트래픽 비율 점진적 증가"
+
+                      # Step 1: Canary 20%
+                      kubectl annotate ingress ${SERVICE_NAME}-canary-ingress \
+                        -n ${NAMESPACE} \
+                        nginx.ingress.kubernetes.io/canary-weight="20" \
+                        --overwrite
+                      sleep 30   # 검증 대기
+
+                      # Step 2: Canary 50%
+                      kubectl annotate ingress ${SERVICE_NAME}-canary-ingress \
+                        -n ${NAMESPACE} \
+                        nginx.ingress.kubernetes.io/canary-weight="50" \
+                        --overwrite
+                      sleep 30   # 검증 대기
+
+                      # Step 3: Canary 100%
+                      kubectl annotate ingress ${SERVICE_NAME}-canary-ingress \
+                        -n ${NAMESPACE} \
+                        nginx.ingress.kubernetes.io/canary-weight="100" \
+                        --overwrite
+
+                      echo "✅ Canary 배포 완료 (100% 트래픽 Canary로 이동)"
+                    """
+                  )
+                ]
+              )
+            ]
+          )
+        }
+      }
+    }
+
+    stage('Approval for Stable Promotion') {
+      steps {
+        script {
+          def userInput = input(
+            id: 'Proceed',
+            message: 'Canary 검증 완료했나요? Stable로 승격할까요?',
+            parameters: [
+              [$class: 'ChoiceParameterDefinition',
+               choices: ['Yes', 'No'],
+               description: '승격 여부 선택',
+               name: 'Proceed']
+            ]
+          )
+
+          if (userInput == 'Yes') {
+            echo "👍 운영자 승인 완료 → Stable 승격 단계로 진행"
+          } else {
+            error "🚫 승격 거부됨 → 파이프라인 중단"
+          }
+        }
+      }
+    }
+
+    stage('Promote to Stable') {
+      steps {
+        script {
+          sshPublisher(
+            publishers: [
+              sshPublisherDesc(
+                configName: 'k8s_server',
+                verbose: true,
+                transfers: [
+                  sshTransfer(
+                    execCommand: """
+                      echo "🚀 Stable 승격 시작"
+
+                      # Stable Deployment를 최신 이미지로 교체
+                      kubectl set image deployment/${SERVICE_NAME}-stable frontend=${IMAGE_NAME}:${IMAGE_TAG} -n ${NAMESPACE}
+                      kubectl rollout status deployment/${SERVICE_NAME}-stable -n ${NAMESPACE}
+
+                      echo "🧹 Canary 리소스 정리"
+                      kubectl delete ingress ${SERVICE_NAME}-canary-ingress -n ${NAMESPACE} --ignore-not-found
+                      kubectl delete deployment ${SERVICE_NAME}-canary -n ${NAMESPACE} --ignore-not-found
+                      kubectl delete service ${SERVICE_NAME}-canary -n ${NAMESPACE} --ignore-not-found
+
+                      echo "✅ Stable 승격 완료: 모든 트래픽 v${IMAGE_TAG}"
+                    """
+                  )
+                ]
+              )
+            ]
+          )
+        }
+      }
+    }
+
+    stage('Result') {
+      steps {
+        echo "🎉 프론트엔드 배포 성공: ${IMAGE_NAME}:${IMAGE_TAG}"
+      }
+    }
+  }
+}
+
