@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: orderlabs
+data:
+  application.yml: |
+    app-config:
+      aws:
+        access-key: -
+        secret-key: -
+        bucket-name: -
+        region-name: -
+
+      database:
+        url: -
+        username: -
+        password: -
+
+      kakao:
+        client-id: -
+        client-secret: -
+        redirect-uri: -
+
+      mail:
+        username: -
+        password: -
+
+      portone:
+        api-key: -
+        secret-key: -
+        mode: TEST
+
+      jwt:
+        private-key: -
+        public-key: -
+
+      weather:
+        api-key: -
+
+      webpush:
+        subject: -
