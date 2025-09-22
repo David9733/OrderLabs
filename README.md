@@ -88,7 +88,26 @@
    
 
 **백엔드**
-1. 소스코드  git에 Push/Merge → Jenkins Pipe line -> Gradle 빌드 (./gradlew clean bootJar) → JAR 산출물 생성 (build/libs/*.jar) → Docker 이미지 빌드 (JRE 베이스 Dockerfile, Kaniko) →  Docker Hub에 이미지 푸시 → 쿠버네티스 배포 (Blue-Green 전략 적용) → Readiness/Liveness Probe 검증 → 사용자에게 일관적 서비스 제공
+1. **코드 변경 및 Push/Merge**
+   - 백엔드 소스코드를 GitHub 원격 저장소에 Push하거나 main 브랜치에 Merge합니다.
+   - GitHub WebHook 이벤트가 발생하면 Jenkins 파이프라인이 자동으로 실행됩니다.
+   - 
+2. **Jenkins Pipeline 실행**
+   - Git Clone: Jenkins가 GitHub 저장소에서 최신 코드를 가져옵니다.
+   - Gradle 빌드: ./gradlew clean bootJar 실행, JAR 산출물(build/libs/*.jar) 생성
+   - Kaniko 빌드 & Docker Hub Push: JRE 베이스 Dockerfile을 활용, Kaniko로 컨테이너 이미지를 빌드하여 Docker Hub에 Push
+
+3. **Blue-Green 배포 적용**
+   - 기존 버전(Blue)과 새로운 버전(Green)을 동시에 실행
+   - Ingress 혹은 Service를 통해 트래픽을 Blue → Green 으로 전환
+   - 문제가 발생하면 즉시 구버전으로 롤백 가능
+  
+4. **안정성 검증**
+   - Readiness Probe / Liveness Probe: 애플리케이션 정상 기동 여부
+   - 배포 후에도 서비스 장애 없이 일관된 성능과 안정성 보장
+  
+5. **최종 서비스 제공**
+   - 무중단 배포 환경에서 사용자에게 안정적이고 일관된 백엔드 서비스를 제공
 
 <br>
 
@@ -175,6 +194,7 @@ HTTPS 인증서를 적용하지 않았지만, 추후 서비스를 정식으로 �
 <br>
 
 ---
+
 
 
 
