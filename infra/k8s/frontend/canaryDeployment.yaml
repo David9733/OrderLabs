@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderlabs-frontend-stable
+  namespace: orderlabs
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: orderlabs-frontend
+      role: stable
+  template:
+    metadata:
+      labels:
+        app: orderlabs-frontend
+        role: stable
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: worker14   # ✅ worker14에만 실행
+      containers:
+        - name: frontend
+          image: hanwhabootcamp17/orderlabs-frontend:1
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderlabs-frontend-canary
+  namespace: orderlabs
+spec:
+  replicas: 0   # Jenkins Canary 단계에서 1로 변경
+  selector:
+    matchLabels:
+      app: orderlabs-frontend
+      role: canary
+  template:
+    metadata:
+      labels:
+        app: orderlabs-frontend
+        role: canary
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: worker14   # ✅ worker14에만 실행
+      containers:
+        - name: frontend
+          image: hanwhabootcamp17/orderlabs-frontend:latest
+          ports:
+            - containerPort: 80

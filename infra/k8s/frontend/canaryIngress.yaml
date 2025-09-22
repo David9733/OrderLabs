@@ -1,0 +1,54 @@
+# Stable Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: orderlabs-frontend-stable-ingress
+  namespace: orderlabs
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: orderlabs-backend
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: orderlabs-frontend-stable
+                port:
+                  number: 80
+---
+# Canary Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: orderlabs-frontend-canary-ingress
+  namespace: orderlabs
+  annotations:
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "20"
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: orderlabs-backend
+                port:
+                  number: 8080
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: orderlabs-frontend-canary
+                port:
+                  number: 80
