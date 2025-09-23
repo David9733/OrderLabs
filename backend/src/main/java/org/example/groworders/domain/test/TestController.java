@@ -12,7 +12,7 @@ public class TestController {
     // blue pod
     @GetMapping("/blue")
     public String stable() {
-        return "blue deploy";
+        return "green deploy";
     }
 
     // green pod
