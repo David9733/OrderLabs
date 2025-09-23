@@ -98,7 +98,7 @@ const onSubmit = async () => {
             <div class="mx-auto col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0">
               <div class="card card-plain">
                 <div class="pb-0 card-header text-start">
-                  <h4 class="font-weight-bolder">로그인</h4>
+                  <h4 class="font-weight-bolder">V2 로그인</h4>
                   <p class="mb-0">아이디와 비밀번호를 입력해주세요.</p>
                 </div>
 
