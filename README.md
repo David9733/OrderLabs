@@ -1,4 +1,4 @@
-![OrderLabs](./images/Banner.png)
+![OrderLabs](./frontend/src/assets/img/readme/Banner.png)
 <h1 align="center" style="color: #50C878;"> OrderLabs 🌿</h1>
 
 
