@@ -149,21 +149,6 @@ Git, GitHub, Figma, Discord
 
 ## 🤔 기술 선택 이유
 
-### Backend / Frontend
-
-| 구분 | 선택 | 이유 |
-|------|------|------|
-| **Backend 프레임워크** | Spring Boot 3.5 | Spring Security·JPA·WebSocket 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
-| **인증** | JWT | Stateless 구조로 서버 세션 부담 없이 Kubernetes 다중 인스턴스 환경에서 인증 처리 가능 |
-| **소셜 로그인** | Kakao OAuth2 | 별도 회원가입 없이 간편 로그인 제공, Spring Security OAuth2 Client로 연동 |
-| **DB** | MariaDB | MySQL 호환 오픈소스, 팀 학습 경험 보유 |
-| **ORM / 쿼리** | QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
-| **결제** | PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
-| **Frontend 프레임워크** | Vue 3 | Composition API로 컴포넌트 재사용성 향상, 팀원 학습 경험 고려 |
-| **상태 관리** | Pinia | Vue 3 공식 권장 상태 관리 라이브러리, Vuex 대비 타입 추론과 코드량 간결 |
-| **배포 전략 (프론트)** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
-| **배포 전략 (백엔드)** | Blue-Green | 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 가능 |
-
 ### Database
 
 데이터베이스 서버를 총 6대로 구성하였습니다. 2대는 Replication, 3대는 Clustering, 나머지 1대는 연산 전용 서버로 운영합니다.
@@ -174,9 +159,34 @@ Git, GitHub, Figma, Discord
 | **Clustering** | Galera Cluster | 작물 상태·온도·습도·일사량 등 실시간 기상 데이터가 끊기면 자동화 시스템이 오작동할 수 있어, 클러스터링으로 장애를 대비했습니다. |
 | **연산 전용 DB** | Separate DB | 운영 DB에 부하를 주지 않고 분석·집계 작업을 수행하기 위해 별도 DB를 분리했습니다. 시계열 데이터의 반복 집계 쿼리가 운영 서비스 성능에 영향을 주지 않도록 하였습니다. |
 
+### Frontend
+
+| 구분 | 선택 | 이유 |
+|------|------|------|
+| **프레임워크** | Vue 3 | Composition API로 컴포넌트 재사용성 향상, 팀원 학습 경험 고려 |
+| **상태 관리** | Pinia | Vue 3 공식 권장 상태 관리 라이브러리, Vuex 대비 타입 추론과 코드량 간결 |
+| **배포 전략** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
+
+### Backend
+
+| 구분 | 선택 | 이유 |
+|------|------|------|
+| **프레임워크** | Spring Boot 3.5 | Spring Security·JPA·WebSocket 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
+| **인증** | JWT | Stateless 구조로 서버 세션 부담 없이 Kubernetes 다중 인스턴스 환경에서 인증 처리 가능 |
+| **소셜 로그인** | Kakao OAuth2 | 별도 회원가입 없이 간편 로그인 제공, Spring Security OAuth2 Client로 연동 |
+| **DB** | MariaDB | MySQL 호환 오픈소스, 팀 학습 경험 보유 |
+| **ORM / 쿼리** | QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
+| **결제** | PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
+| **배포 전략** | Blue-Green | 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 가능 |
+
 ### CI/CD
 
-Jenkins(프론트·백엔드 분리 빌드) + Kaniko(데몬 없는 이미지 빌드) + Ansible(서버 설정 자동화) + Ingress Controller(경로 기반 라우팅·배포 전략 지원) 조합으로 구성.
+| 구분 | 선택 | 이유 |
+|------|------|------|
+| **빌드 자동화** | Jenkins | 프론트·백엔드 분리 빌드 파이프라인 구성, GitHub Webhook으로 push 시 자동 트리거 |
+| **이미지 빌드** | Kaniko | Docker 데몬 없이 Kubernetes 내부에서 컨테이너 이미지 빌드 가능 |
+| **서버 프로비저닝** | Ansible | 서버 초기 설정 및 환경 구성 자동화 |
+| **트래픽 라우팅** | Ingress Controller | 경로 기반 라우팅 및 Canary·Blue-Green 배포 전략 지원 |
 
 ---
 
@@ -194,12 +204,12 @@ Jenkins(프론트·백엔드 분리 빌드) + Kaniko(데몬 없는 이미지 빌
 
 ## 🔧 트러블슈팅 / 개선 경험
 
-- **Merge 충돌**: 팀원들이 중간중간 merge를 하지 않아, 나중에 한꺼번에 합칠 때 충돌이 자주 발생함. 이를 해결하기 위해 GitHub 정리 및 merge 확인을 담당하여 주기적인 merge를 유도함.
-
 - **SQL 성능 개선 (선행 팀 프로젝트)**:
   팀 공동으로 JMeter를 활용해 DB에 직접 부하를 가하고, Prometheus·Grafana로 부하 양상을 시각적으로 관찰했습니다.
   관찰 결과를 바탕으로 쿼리 구조를 변경(JOIN → Subquery, 0.063s → 0.047s)하고 Index를 적용(actual time 2.57ms → 0.255ms)하여 응답 속도를 개선했으며,
   데이터 수가 적어 성능 개선 효과를 충분히 검증하기에는 한계가 있었으나, 측정 결과를 바탕으로 데이터 증가 시 추가 개선 가능성을 확인했습니다.
+
+- **Merge 충돌**: 팀원들이 중간중간 merge를 하지 않아, 나중에 한꺼번에 합칠 때 충돌이 자주 발생함. 이를 해결하기 위해 GitHub 정리 및 merge 확인을 담당하여 주기적인 merge를 유도함.
 
 ---
 
