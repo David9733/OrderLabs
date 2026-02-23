@@ -61,6 +61,14 @@
 
 ---
 
+## 🧩 요구 사항 명세서 바로가기
+
+  <a href="https://docs.google.com/spreadsheets/d/1xPRM4gAtze_Mu-vF_rwFMtvYI7baOceUvJYlSDdcA-o/edit?gid=1400486362#gid=1400486362" target="_blank">
+    🔗 요구사항 명세서 바로가기
+  </a>
+
+---
+
 ## 🕵️ 팀원 소개
 
 <div align="center">
