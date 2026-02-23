@@ -1,4 +1,6 @@
-<img width="3312" height="1107" alt="OrderLabs" src="https://github.com/user-attachments/assets/319894c4-7d18-4be0-afa1-598fb2517989" />
+![OrderLabs](./images/Banner.png)
+<h1 align="center" style="color: #50C878;"> OrderLabs 🌿</h1>
+
 
 ---
 
@@ -118,23 +120,21 @@
 
 ---
 
-## CI/CD 파이프라인 흐름
+## CI/CD
 
-> CI/CD 담당: 양승우
-
-**프론트**: Push/Merge → Jenkins WebHook → npm build → Kaniko 이미지 빌드 → Canary 20%→50%→100% → 승인 후 Stable 승격  
-**백엔드**: Push/Merge → Jenkins WebHook → Gradle bootJar → Kaniko 이미지 빌드 → Blue/Green 전환 배포
+프로젝트에 CI/CD 적용됨 (Jenkins, Docker, Kubernetes)
 
 ---
 
-## 핵심 메서드 (대표 사례)
+## 핵심 메서드 (주문 파트)
 
 | 함수/메서드 | 위치 | 설명 |
 |-------------|------|------|
-| `predictDaily` | PredictionService | 기상 데이터 유사도 매칭으로 일별 생산량 예측 |
-| `findBestMatchCondition` | PredictionService | 일사량·기온·습도 가중치로 최적 조건 매칭 |
-| `createOrder` | OrderService | 장바구니 기반 주문 생성, 사용자 검증 및 가격 계산 |
-| `fetchWeatherData` | WeatherService | 기상청 API 연동, 일사량·기온·습도 수집 |
+| `createOrder` | OrderService | 장바구니 ID 목록으로 주문서 생성, 사용자 검증 및 총 가격 계산 |
+| `orderConfirm` | OrderService | 주문 확정, 주문번호 생성 후 DB 저장 |
+| `addCart` | CartService | 장바구니 담기, 기존 상품이면 수량·가격 갱신 |
+| `allCarts` | CartService | 사용자별 장바구니 목록 조회 |
+| `validation` | PaymentService | PortOne 결제 검증, 금액 대조 후 결제 내역 저장 |
 
 ---
 
@@ -168,9 +168,3 @@ npm run serve
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
 
----
-
-## 참고 자료
-
-- [발표자료 PDF](링크) (추가 예정)
-- [API 문서](링크) (SpringDoc 적용, `/swagger-ui.html` 등)
