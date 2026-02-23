@@ -16,7 +16,7 @@
 |------|------|
 | **기간** | 2025.06 ~ 2025.09 |
 | **인원** | 5명 |
-| **내 역할** | DB 설계(ERD/요구사항), 프론트엔드 품질·주문 UI, 백엔드 주문 일부·Swagger, GitHub 정리 |
+| **내 역할** | DB 설계(ERD/요구사항), 프론트엔드 주문 UI · UI 품질 확인, 백엔드 주문 일부·Swagger, GitHub 정리 |
 | **핵심 기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
 | **배포** | 없음 |
 
@@ -174,6 +174,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
