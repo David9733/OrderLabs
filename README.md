@@ -69,6 +69,12 @@
 
 ---
 
+## 📐 ERD
+
+![ERD](./frontend/src/assets/img/readme/03_ERD.png)
+
+---
+
 ## 🕵️ 팀원 소개
 
 <div align="center">
