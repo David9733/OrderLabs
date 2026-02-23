@@ -83,10 +83,17 @@
 
 ## 기술 스택
 
-**Backend** | Spring Boot 3.5, Java 17, Spring Security, JWT, OAuth2(Kakao), MariaDB, QueryDSL, WebSocket, AWS S3, SpringDoc(API 문서), Portone(결제), Web Push
-**Frontend** | Vue 3, Pinia, Vue Router, Axios, Chart.js, Bootstrap
-**Infra** | Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress
-**협업** | Git, GitHub, Figma, Discord
+**Backend**
+Spring Boot 3.5, Java 17, Spring Security, JWT, OAuth2(Kakao), MariaDB, QueryDSL, WebSocket, AWS S3, SpringDoc(API 문서), Portone(결제), Web Push
+
+**Frontend**
+Vue 3, Pinia, Vue Router, Axios, Chart.js, Bootstrap
+
+**Infra**
+Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress
+
+**협업**
+Git, GitHub, Figma, Discord
 
 - 의존성: [backend/build.gradle](backend/build.gradle) | [frontend/package.json](frontend/package.json)
 
@@ -113,14 +120,24 @@
 
 ## 기술 선택 이유
 
+### Backend / Frontend
+
 | 구분 | 선택 | 이유 |
 |------|------|------|
-| **프론트** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
-| **백엔드** | Blue-Green | 핵심 비즈니스 로직 담당. 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 |
-| **빌드** | Jenkins | GitHub Actions 대비 서버 자원 직접 제어, 프론트/백엔드 분리 빌드 |
-| **이미지 빌드** | Kaniko | Docker 데몬 없이 이미지 빌드, 보안·성능 이점 |
-| **설정 관리** | Ansible | 여러 서버에 동일 설정 적용, YAML Playbook으로 재현성·자동화 |
-| **라우팅** | Ingress Controller | 도메인/경로 기반 라우팅, Canary·Blue-Green 배포 지원 |
+| **Backend 프레임워크** | Spring Boot 3.5 | Spring Security·JPA·WebSocket 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
+| **인증** | JWT | Stateless 구조로 서버 세션 부담 없이 Kubernetes 다중 인스턴스 환경에서 인증 처리 가능 |
+| **소셜 로그인** | Kakao OAuth2 | 별도 회원가입 없이 간편 로그인 제공, Spring Security OAuth2 Client로 연동 |
+| **DB** | MariaDB | MySQL 호환 오픈소스, 팀 학습 경험 보유 |
+| **ORM / 쿼리** | QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
+| **결제** | PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
+| **Frontend 프레임워크** | Vue 3 | Composition API로 컴포넌트 재사용성 향상, 팀원 학습 경험 고려 |
+| **상태 관리** | Pinia | Vue 3 공식 권장 상태 관리 라이브러리, Vuex 대비 타입 추론과 코드량 간결 |
+| **배포 전략 (프론트)** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
+| **배포 전략 (백엔드)** | Blue-Green | 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 가능 |
+
+### CI/CD
+
+Jenkins(프론트·백엔드 분리 빌드) + Kaniko(데몬 없는 이미지 빌드) + Ansible(서버 설정 자동화) + Ingress Controller(경로 기반 라우팅·배포 전략 지원) 조합으로 구성.
 
 ---
 
