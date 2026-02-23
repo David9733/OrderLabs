@@ -51,9 +51,6 @@
 
 - 역할별 요구사항 명세서 작성 및 ERD 설계
 - DB 서버 6대 아키텍처 설계
-  - Replication (Master-Slave): 단일 DB 장애 시 Failover 대응
-  - Clustering: 실시간 기상 데이터 중단 방지
-  - 연산 전용 DB 분리: 운영 DB 부하 격리
 
 ### 2단계 · Frontend
 
@@ -236,6 +233,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
