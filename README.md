@@ -38,6 +38,10 @@
 ### 1단계 · DB 설계
 
 - 역할별 요구사항 명세서 작성 및 ERD 설계
+- DB 서버 6대 아키텍처 설계
+  - Replication (Master-Slave): 단일 DB 장애 시 Failover 대응
+  - Clustering: 실시간 기상 데이터 중단 방지
+  - 연산 전용 DB 분리: 운영 DB 부하 격리
 
 ### 2단계 · Frontend
 
@@ -156,6 +160,11 @@ Jenkins(프론트·백엔드 분리 빌드) + Kaniko(데몬 없는 이미지 빌
 ## 트러블슈팅 / 개선 경험
 
 - **Merge 충돌**: 팀원들이 중간중간 merge를 하지 않아, 나중에 한꺼번에 합칠 때 충돌이 자주 발생함. 이를 해결하기 위해 GitHub 정리 및 merge 확인을 담당하여 주기적인 merge를 유도함.
+
+- **SQL 성능 개선 (선행 팀 프로젝트)**:
+  팀 공동으로 JMeter를 이용해 DB에 직접 부하를 가하고 Prometheus·Grafana로 부하 양상을 시각적으로 관찰함.
+  관찰 결과를 바탕으로 쿼리 구조 변경(JOIN → Subquery, 0.063s → 0.047s)과
+  Index 적용(actual time 2.57ms → 0.255ms)을 직접 수행하여 응답 속도 개선.
 
 ---
 
