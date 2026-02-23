@@ -99,7 +99,6 @@ Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress
 **협업**
 Git, GitHub, Figma, Discord
 
-- 의존성: [backend/build.gradle](backend/build.gradle) | [frontend/package.json](frontend/package.json)
 
 <div>
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
@@ -191,6 +190,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
