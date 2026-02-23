@@ -21,6 +21,18 @@
 
 ---
 
+## 🕵️ 팀원 소개
+
+<div align="center">
+
+| <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
+| :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
+
+</div>
+
+---
+
 ## 🎯 프로젝트 목적
 
 "자라는 만큼만 주문받는다."
@@ -75,18 +87,6 @@
 
 ---
 
-## 🕵️ 팀원 소개
-
-<div align="center">
-
-| <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
-| :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
-
-</div>
-
----
-
 ## ✨ 주요 기능
 
 -  생육·기상 데이터 기반 주문 가능 여부 판단
@@ -102,13 +102,19 @@
 ## 🛠️ 기술 스택
 
 **Backend**
-Spring Boot 3.5, Java 17, Spring Security, JWT, OAuth2(Kakao), MariaDB, QueryDSL, WebSocket, AWS S3, SpringDoc(API 문서), Portone(결제), Web Push
+Spring Boot 3.5.4, Java 17, Spring Security, JWT 0.11.5, OAuth2(Kakao), QueryDSL 5.0.0, WebSocket, AWS S3, SpringDoc 2.8.4, PortOne SDK 0.19.2, Web Push 5.1.1
 
 **Frontend**
-Vue 3, Pinia, Vue Router, Axios, Chart.js, Bootstrap
+Vue 3.4.19, Pinia 3.0.3, Vue Router 4.3.0, Axios 1.10.0, Chart.js 4.4.1, Bootstrap 5.3.3
+
+**DB**
+MariaDB 10.6.22, MySQL 8.0.42
 
 **Infra**
 Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress
+
+**모니터링**
+JMeter, Prometheus, Grafana
 
 **협업**
 Git, GitHub, Figma, Discord
