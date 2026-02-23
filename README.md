@@ -1,5 +1,4 @@
 ![OrderLabs](./frontend/src/assets/img/readme/Banner.png)
-<h1 align="center" style="color: #50C878;"> OrderLabs 🌿</h1>
 
 
 <br>
@@ -175,6 +174,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
