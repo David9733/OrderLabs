@@ -1,0 +1,8 @@
+# Visual Studio local settings
+.vs/
+
+# Claude Code project instructions
+CLAUDE.md
+
+# Claude Code session data
+.claude/
