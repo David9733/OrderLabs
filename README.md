@@ -129,9 +129,15 @@ Git, GitHub, Figma, Discord
 
 ---
 
-## 🏗️ 시스템 아키텍처
+## 🗄️ DB 아키텍처
 
-![시스템 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
+![DB 아키텍처](./frontend/src/assets/img/readme/04_Architecture.png)
+
+---
+
+## 🏗️ CI/CD 아키텍처
+
+![CI/CD 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
 
 ---
 
