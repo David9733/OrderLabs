@@ -115,8 +115,8 @@
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
-| **프론트 배포** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
-| **백엔드 배포** | Blue-Green | 핵심 비즈니스 로직 담당. 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 |
+| **프론트** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
+| **백엔드** | Blue-Green | 핵심 비즈니스 로직 담당. 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 |
 | **빌드** | Jenkins | GitHub Actions 대비 서버 자원 직접 제어, 프론트/백엔드 분리 빌드 |
 | **이미지 빌드** | Kaniko | Docker 데몬 없이 이미지 빌드, 보안·성능 이점 |
 | **설정 관리** | Ansible | 여러 서버에 동일 설정 적용, YAML Playbook으로 재현성·자동화 |
@@ -165,4 +165,5 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
