@@ -35,12 +35,17 @@
 
 ---
 
-## 팀원 소개
+## 🕵️ 팀원 소개
+<br>
+<div align="center">
 
-| | | | | |
-|:---:|:---:|:---:|:---:|:---:|
-| 🦊 **양승우** [@atimaby28](https://github.com/atimaby28) | 🐻 **이시욱** [@David9733](https://github.com/David9733) | 🦎 **구창모** [@kucha240](https://github.com/kucha240) | 🐰 **유현경** [@gaangstar](https://github.com/gaangstar) | 🐱 **윤소민** [@somminn](https://github.com/somminn) |
+| <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
+| :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
 
+</div>
+
+<br><br>
 ---
 
 ## 내 기여
@@ -168,6 +173,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
