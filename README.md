@@ -1,231 +1,176 @@
-<img width="3312" height="1107" alt="Image" src="https://github.com/user-attachments/assets/319894c4-7d18-4be0-afa1-598fb2517989" />
-<br>
+<img width="3312" height="1107" alt="OrderLabs" src="https://github.com/user-attachments/assets/319894c4-7d18-4be0-afa1-598fb2517989" />
 
-## 🍀 프로젝트 소개
-<br>
-<div>
-  <h3 align="center">
-    "자라는 만큼만 주문받는다."
-  </h3>
-</div>
+---
 
- <br>
+## 한 줄 소개
 
-이 서비스는 농·수산물의 생육 상태나 생물의 건강 데이터를 기반으로 주문 가능 여부를
-자동 판단하고 관리하는 스마트 주문 관리 플랫폼입니다.
-기존의 단순 재고 기반 판매 방식과 달리, 생물의 생육데이터 여기서는 공공 데이터(예:
-기상정보, 생육 센서 데이터 등)와 실시간 수집된 생물 정보(예: 수산물 성장률, 건강도)를
-분석하여 언제 주문을 받을 수 있고, 언제 배송이 가능한지를 예측 및 자동 통제합니다.
-이를 통해 생산자는 재고 과잉이나 무리한 주문을 방지하고, 소비자는 더 신선하고 정확한
-일정으로 상품을 수령할 수 있습니다.
-생물은 자라야 팔 수 있습니다. <br><br>
+생육 데이터와 기상 정보를 활용해 농·수산물의 주문 가능 여부를 자동 판단하는 스마트 주문 관리 플랫폼
 
-우리는 그 **자라는 과정**까지 주문 시스템에 담습니다.
+---
 
-<br><br>
+## 프로젝트 개요
 
+| 항목 | 내용 |
+|------|------|
+| **기간** | 2025.06 ~ 2025.09 |
+| **인원** | 5명 |
+| **내 역할** | DB 설계(ERD/요구사항), 프론트엔드 품질·주문 UI, 백엔드 주문 일부·Swagger, GitHub 정리 |
+| **핵심 기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
+| **배포** | 없음 |
 
-## 🕵️ 팀원 소개
-<br>
-<div align="center">
+---
 
-| <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
-| :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
+## 프로젝트 목적
 
-</div>
+"자라는 만큼만 주문받는다."
 
-<br><br>
+농·수산물의 생육 상태와 생물 건강 데이터를 기반으로 주문 가능 여부를 자동 판단·관리하는 B2B 스마트 주문 플랫폼입니다.
 
+- **기존 방식**: 재고 기반 판매
+- **본 서비스**: 공공 데이터(기상정보, 생육 센서 등)와 실시간 생물 정보(성장률, 건강도)를 분석해 주문·배송 시점 예측 및 자동 제어
+- **효과**: 생산자는 재고 과잉·무리한 주문 방지, 소비자는 신선한 상품과 정확한 일정 제공
 
-## 🛠️ 기술 스택
-<br>
+---
+
+## 팀원 소개
+
+| | | | | |
+|:---:|:---:|:---:|:---:|:---:|
+| 🦊 **양승우** [@atimaby28](https://github.com/atimaby28) | 🐻 **이시욱** [@David9733](https://github.com/David9733) | 🦎 **구창모** [@kucha240](https://github.com/kucha240) | 🐰 **유현경** [@gaangstar](https://github.com/gaangstar) | 🐱 **윤소민** [@somminn](https://github.com/somminn) |
+
+---
+
+## 내 기여
+
+### 1차 DB 설계
+
+- ERP 시스템 목표로 역할 배정 및 요구사항 명세서 작성
+- ERD 설계
+
+### 2차 Frontend
+
+- 사이트 뼈대 디자인 찾기 및 선정 (커스텀 가능한 템플릿으로 시간 절약)
+- Figma 디자인
+- 정상 작동 확인 및 오류 검토 (품질 담당)
+- 주문 부분 프론트 화면 구현
+
+### 3차 Backend
+
+- 주문 부분 일부 구현 (복잡한 로직은 다른 팀원 담당, 기본 CRUD 등 상대적으로 단순한 부분 담당)
+- Swagger(SpringDoc) API 문서화 담당
+
+### 4차 CI/CD
+
+- CI/CD는 양승우 팀원 담당 (본인 미참여)
+- 대신 GitHub 정리, merge 확인 담당
+
+---
+
+## 주요 기능
+
+- 생육·기상 데이터 기반 주문 가능 여부 판단
+- 농장·작물 등록 및 재고 관리
+- 장바구니·주문·결제 (Portone 연동)
+- 생산량 예측 (기상 데이터 유사도 매칭)
+- 카카오 OAuth2 로그인
+- WebSocket 채팅, 푸시 알림
+- 판매량 조회, 대시보드
+
+---
+
+## 기술 스택
+
+**Backend** | Spring Boot 3.5, Java 17, Spring Security, JWT, OAuth2(Kakao), MariaDB, QueryDSL, WebSocket, AWS S3, SpringDoc(API 문서), Portone(결제), Web Push  
+**Frontend** | Vue 3, Pinia, Vue Router, Axios, Chart.js, Bootstrap  
+**Infra** | Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress  
+**협업** | Git, GitHub, Figma, Discord  
+
+- 의존성: [backend/build.gradle](backend/build.gradle) | [frontend/package.json](frontend/package.json)
+
 <div>
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
   <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
   <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
-</div>
-<div>
   <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
   <img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">
   <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white">
 </div>
-<br><br>
-
-
-## ⚙️ 시스템 아키텍처
-
-<br>
-
-![시스템 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
-
-<br><br>
-
-## 🎬 CI/CD 파이프라인 흐름 및 시나리오
-
-전제 조건 : CI/CD 프로젝트에서는 쿠버네티스 클러스터 위에 Jenkins를 구축하였습니다. <br><br>
-
-**💻 프론트**
-1. **코드 변경 및 Push/Merge**
-   - 프론트엔드 소스코드를 GitHub 원격 레포지토리에 Push하거나 main 브랜치에 Merge합니다.
-   - GitHub WebHook을 통해 Jenkins 파이프라인 실행이 트리거가 됩니다.
-
-2. **Jenkins Pipeline 실행**
-   - Git Clone: GitHub 저장소의 최신 코드를 Jenkins 워크스페이스로 가져옵니다.
-   - Node 빌드: npm install && npm run build 실행, 정적 산출물(dist/) 생성
-   - Kaniko 빌드 & Docker Hub Push: Nginx 베이스 이미지 기반 Dockerfile을 활용, Kaniko로 컨테이너 이미지를 빌드하여 Docker Hub에 Push
-   - 쿠버네티스 배포: Deployment 및 Ingress 리소스 적용, 새로운 프론트엔드 버전 배포
-
-3. **Canary 배포 적용**
-   - 일부 사용자(20%)에게 먼저 배포
-   - UI 및 사용자 경험을 실제로 검증
-   - 안정성이 확인되면 트래픽 100%로 확장하여 전체 사용자에게 배포
-
-4. **최종 서비스 제공**
-   - 사용자는 무중단으로 업데이트된 UI를 경험
-   - Canary 과정에서 문제가 생기면 빠른 롤백 가능<br><br>  
-  
-   
-   
-
-**🌐 백엔드**
-1. **코드 변경 및 Push/Merge**
-   - 백엔드 소스코드를 GitHub 원격 저장소에 Push하거나 main 브랜치에 Merge합니다.
-   - GitHub WebHook 이벤트가 발생하면 Jenkins 파이프라인이 자동으로 실행됩니다.
-     
-2. **Jenkins Pipeline 실행**
-   - Git Clone: Jenkins가 GitHub 저장소에서 최신 코드를 가져옵니다.
-   - Gradle 빌드: ./gradlew clean bootJar 실행, JAR 산출물(build/libs/*.jar) 생성
-   - Kaniko 빌드 & Docker Hub Push: JRE 베이스 Dockerfile을 활용, Kaniko로 컨테이너 이미지를 빌드하여 Docker Hub에 Push
-
-3. **Blue-Green 배포 적용**
-   - 기존 버전(Blue)과 새로운 버전(Green)을 동시에 실행
-   - Blue → Green 으로 전환
-   - 문제가 발생하면 즉시 구버전으로 롤백 가능
-  
-4. **안정성 검증**
-   - Readiness Probe / Liveness Probe: 애플리케이션 정상 기동 여부
-   - 배포 후에도 서비스 장애 없이 일관된 성능과 안정성 보장
-  
-5. **최종 서비스 제공**
-   - 무중단 배포 환경에서 사용자에게 안정적이고 일관된 백엔드 서비스를 제공
-
-<br>
-
-<br><br>
-
-
-## ✔️ CI/CD 배포 방식 선택 배경
-
-<br>
-
-### ❓ 프론트에 Canary 배포 쓴 이유
-
-우리 프로젝트는 B2B 시스템이다 보니 B2C처럼 UI에 민감하지는 않습니다.   
-그러나 실제로 사용하는 판매자와 구매자 입장에서는 편리하고 직관적인 화면이 반드시 필요했습니다.  
-이를 위해 우리는 UI 개선을 단순히 한 번에 배포하는 대신 **Canary 배포** 방식을 적용했습니다.  
-새로운 버전을 **전체 사용자에게 일괄 적용하지 않고 일부 사용자에게만** 우선 제공하였습니다.   
-그 결과, 사용 반응과 오류 여부를 확인할 수 있습니다.   
-이렇게 제한된 범위에서 검증 → 피드백 반영 → 안정성 확보 → 전면 배포라는 단계를 거침으로써, 서비스 품질을 점진적으로 높이고 사용자에게 안정적인 업데이트 경험을 제공할 수 있습니다.
-
-<br>
-
-### ❓ 백엔드에 Blue/Green 쓴 이유
-
-프로젝트의 백엔드는 농장, 사용자, 주문, 재고, 장바구니, 결제 및 검증 같은 핵심 비즈니스 로직을 담당합니다.   
-이런 영역 시스템 전체 안정성과 직결되기 때문에, 장애나 오류가 발생하면 곧바로 서비스 신뢰도에 영향을 줄 수 있습니다.   
-그래서 무중단 배포 전략으로 **Blue/Green 방식**을 적용하였습니다.     
-**트래픽을 한 번에 전환하는 구조**이므로 사용자는 배포 중에도 끊김이나 불안정성을 체감하지 않습니다.   
-전체 서버 버전을 단숨에 업데이트할 수 있으며, 문제 발생 시 이전 버전으로 롤백이 가능하여 리스크를 최소화할 수 있습니다.  
-
-
-<br>
-
-### ❓ Github Action 아닌 Jenkins를 선택한 이유
-
-GitHub Actions은 대규모 프로젝트로 확장할 경우 빌드 속도가 느리고 성능 확장성에도 한계가 발생하였습니다.    
-반면 **Jenkins**는 **자체 서버 기반**으로 동작하기 때문에 빌드와 배포를 실행하는 서버 자원을 직접 제어할 수 있습니다.  
-특히 프론트엔드와 백엔드를 독립적으로 관리하고 빌드와 배포 과정을 서로 다른 에이전트로 분리해 운영해야 하는 우리 프로젝트의 특성에 적합하여 적용하였습니다.  
-Jenkins를 활용하면 **다양한 브랜치 전략을 유연하게 적용**할 수 있어 기능 단위 배포와 긴급 핫픽스 대응이 가능해집니다.   
-배포 자동화를 통해 **개발 환경과 운영 환경 간의 일관성을 보장**하고, 잦은 업데이트 상황에서도 안정성을 유지할 수 있습니다.   
-더불어 **품질 관리 도구와의 통합이 용이**하여 배포 전에 코드 품질 검사 및 자동 검증을 사전에 수행할 수 있습니다.  
-오픈소스 기반이라 커뮤니티와 문서가 많아 문제 해결과 커스터마이징에도 유리하다는 점에서 Jenkins를 선택하게 되었습니다.  
-
-
-
-<br>
-
-### ❓ Kaniko를 쓴 이유
-
-컨테이너 기반 CI/CD 파이프라인에서 Docker in Docker 방식은 특정 권한 모드를 필요로 해서 보안적으로 위험하고, 빌드 캐시를 공유할 수 없는 문제나 중첩된 컨테이너 실행으로 인한 성능 저하까지 유발하기 때문에 사용하면 안됩니다.   
-그래서 우리는 처음부터 **Kaniko**를 도입해 **Docker 데몬 없이도 이미지를 안전하게 빌드**할 수 있도록 했고, 실제 적용 과정에서 안정적이고 효율적인 빌드 환경을 구축할 수 있었습니다.
-
-
-<br>
-
-### ❓ Ansible 쓴 이유 
-
-CI/CD 및 인프라 운영 과정에서 여러 대의 서버(마스터·워커 노드 등)에 동일한 설정을 반복적으로 적용해야 했습니다.    
-처음에는 수동으로 진행했는데, 서버마다 환경이 달라져서 문제가 생기고 재현성도 떨어져 **Ansible**을 도입하였습니다.    
-SSH만으로 서버를 제어할 수 있으며, YAML 기반의 Playbook을 통해 서버 설정, 패키지 설치, 배포 과정을 관리할 수 있습니다.    
-이를 통해 일관성 있는 **환경 구성과 재사용성, 자동화**를 보장할 수 있었습니다.     
-따라서 쿠버네티스 노드 초기 설정과 Jenkins 배포 과정에서 **인프라 전반의 안정성과 운영 효율성**을 확보할 수 있었습니다.  
-
-
-<br>
-
-### ❓ Ingress Controller 쓴 이유 
-
-우리 프로젝트에서는 쿠버네티스 환경에서 MetalLB와 LoadBalancer Service 조합만으로도 외부 접근을 열 수 있었습니다.   
-그런데 서비스가 많아지다 보니, 서비스마다 외부 IP를 따로 할당해야 해서 관리가 힘들고, 도메인 기반이나 경로 기반 라우팅을 적용하기도 어려웠습니다.   
-백엔드에 Blue-Green 배포, 프론트엔드에 Canary 배포를 적용했는데, 활용하려면 **Ingress Controller**가 꼭 필요했습니다.   
-HTTPS 인증서를 적용하지 않았지만, 추후 서비스를 정식으로 오픈할 때는 **보안 강화**를 위해 **HTTPS 인증을 도입할 계획**입니다.   
-단순히 외부에 노출만 하는 게 아니라, 서비스 확장성과 운영까지 고려해서 Ingress Controller를 활용할 수 있도록 확장 가능성을 열어 두었습니다.  
-
-
-<br>
-
-
-<br><br>
-
-
-
- ## 📺 CI/CD 배포 및 테스트
-
-<br>
 
 ---
 
+## 시스템 아키텍처
 
+![시스템 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
 
+---
 
+## 기술 선택 이유
 
+| 구분 | 선택 | 이유 |
+|------|------|------|
+| **프론트** | Canary | UI 변경을 일부 사용자(20%)에게 먼저 적용해 검증 후 전면 배포 |
+| **백엔드** | Blue-Green | 핵심 비즈니스 로직 담당. 트래픽 한 번에 전환해 무중단 배포, 문제 시 즉시 롤백 |
+| **빌드** | Jenkins | GitHub Actions 대비 서버 자원 직접 제어, 프론트/백엔드 분리 빌드 |
+| **이미지 빌드** | Kaniko | Docker 데몬 없이 이미지 빌드, 보안·성능 이점 |
+| **설정 관리** | Ansible | 여러 서버에 동일 설정 적용, YAML Playbook으로 재현성·자동화 |
+| **라우팅** | Ingress Controller | 도메인/경로 기반 라우팅, Canary·Blue-Green 배포 지원 |
 
+---
 
+## CI/CD 파이프라인 흐름
 
+> CI/CD 담당: 양승우
 
+**프론트**: Push/Merge → Jenkins WebHook → npm build → Kaniko 이미지 빌드 → Canary 20%→50%→100% → 승인 후 Stable 승격  
+**백엔드**: Push/Merge → Jenkins WebHook → Gradle bootJar → Kaniko 이미지 빌드 → Blue/Green 전환 배포
 
+---
 
+## 핵심 메서드 (대표 사례)
 
+| 함수/메서드 | 위치 | 설명 |
+|-------------|------|------|
+| `predictDaily` | PredictionService | 기상 데이터 유사도 매칭으로 일별 생산량 예측 |
+| `findBestMatchCondition` | PredictionService | 일사량·기온·습도 가중치로 최적 조건 매칭 |
+| `createOrder` | OrderService | 장바구니 기반 주문 생성, 사용자 검증 및 가격 계산 |
+| `fetchWeatherData` | WeatherService | 기상청 API 연동, 일사량·기온·습도 수집 |
 
+---
 
+## 트러블슈팅 / 개선 경험
 
+- **Merge 충돌**: 팀원들이 중간중간 merge를 하지 않아, 나중에 한꺼번에 합칠 때 충돌이 자주 발생함. 이를 해결하기 위해 GitHub 정리 및 merge 확인을 담당하여 주기적인 merge를 유도함.
 
+---
 
+## 실행 및 테스트
 
+### 로컬 실행
 
+**Backend**
+```bash
+cd backend
+./gradlew bootRun
+```
+필요 환경변수: `DB_URL`, `DB_USERNAME`, `DB_PASSWORD`, `AWS_ACCESS_KEY`, `KAKAO_CLIENT_ID` 등 (application.yml 참고)
 
+**Frontend**
+```bash
+cd frontend
+npm install
+npm run serve
+```
 
+### CI/CD 배포 테스트
 
+1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
+2. GitHub WebHook 설정 (Push/Merge 시 트리거)
+3. main 브랜치 Push 후 파이프라인 자동 실행 확인
 
+---
 
+## 참고 자료
 
-
-
-
-
-
-
-
-
+- [발표자료 PDF](링크) (추가 예정)
+- [API 문서](링크) (SpringDoc 적용, `/swagger-ui.html` 등)
