@@ -18,8 +18,6 @@
 | **인원** | 5명 |
 | **내 역할** | DB 설계(ERD/요구사항), 프론트엔드 주문 UI · UI 품질 검토, 백엔드 주문 API 구현 · Swagger 문서화, GitHub 브랜치 관리 |
 | **핵심 기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
-| **배포** | [https://www.be17.site/signin](https://www.be17.site/signin) |
-| **API 문서** | [Swagger UI](https://www.be17.site/api/swagger-ui/swagger-ui/index.html) |
 
 ---
 
@@ -167,3 +165,4 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
