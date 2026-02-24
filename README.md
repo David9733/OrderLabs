@@ -65,9 +65,11 @@
 - 주문 관련 CRUD API 구현 
 - SpringDoc(Swagger) 기반 API 문서화 적용
 
-### 4단계 · 협업 관리
+### 4단계 · 문서 관리
 
-- GitHub 브랜치 관리 및 PR/merge 검토로 충돌 예방 프로세스 수립
+- README 작성 및 구조 정리
+- GitHub 위키 페이지 작성
+- 기능 시연 영상 촬영 및 정리
 
 ## ✨ 주요 기능
 
