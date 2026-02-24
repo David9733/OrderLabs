@@ -81,17 +81,6 @@
 
 ---
 
-## 🎬 화면 시연
-
-### 🛒 주문자
-
-#### - 주문관리 시연
-<br>
-<img src="https://github.com/user-attachments/assets/1c5aab15-2815-4f1f-8ad0-7f042afa14e5">
-<br>
-
----
-
 ## 🛠️ 기술 스택
 
 **Backend**
@@ -197,6 +186,13 @@ Git, GitHub, Figma, Discord
 | `addCart` | CartService | 장바구니 담기, 기존 상품이면 수량·가격 갱신 |
 | `allCarts` | CartService | 사용자별 장바구니 목록 조회 |
 | `validation` | PaymentService | PortOne 결제 검증, 금액 대조 후 결제 내역 저장 |
+
+### 🛒 주문자
+
+#### - 주문관리 시연
+<br>
+<img src="https://github.com/user-attachments/assets/1c5aab15-2815-4f1f-8ad0-7f042afa14e5">
+<br>
 
 ---
 
