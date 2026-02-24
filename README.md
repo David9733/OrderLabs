@@ -59,7 +59,6 @@
 - 기능별 시나리오 테스트 및 오류 검토
 - 주문 관련 화면(주문 생성·조회·수정·완료) 구현
 - 저장된 로그인 정보를 활용해 농부(판매자)·구매자 역할별 화면 설계
-- 로그인 시 이메일 형식과 회원 유형만 입력하면 다음 화면으로 진행되는 흐름 구현
 
 ### 3단계 · Backend
 
@@ -250,6 +249,7 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+
 
 
 
