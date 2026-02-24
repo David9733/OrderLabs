@@ -149,6 +149,13 @@ Git, GitHub, Figma, Discord
 
 ![CI/CD 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
 
+> Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 WebHook으로 파이프라인이 자동 트리거됩니다.
+
+| 구분 | 흐름 | 배포 전략 |
+|------|------|-----------|
+| **Frontend** | GitHub Push → Jenkins (Git Clone → npm build → Kaniko 이미지 빌드 → Docker Hub Push → k8s 배포) | **Canary** — 20% 트래픽으로 먼저 검증 후 전체 배포. 문제 시 즉시 롤백 |
+| **Backend** | GitHub Push → Jenkins (Git Clone → Gradle build → Kaniko 이미지 빌드 → Docker Hub Push → k8s 배포) | **Blue-Green** — 구버전(Blue)·신버전(Green) 동시 운영 후 전환. 문제 시 즉시 롤백 |
+
 ---
 
 ## 🤔 기술 선택 이유
