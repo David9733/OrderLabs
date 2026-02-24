@@ -216,10 +216,17 @@ Git, GitHub, Figma, Discord
 
 ### 🛒 주문자
 
-#### - 주문관리 시연
-<br>
-<img src="https://github.com/user-attachments/assets/1c5aab15-2815-4f1f-8ad0-7f042afa14e5">
-<br>
+#### 🙋‍♂️ 주문
+<img src="https://github.com/user-attachments/assets/5e41a1f7-e3be-43c5-8a25-c20715f7eec5">
+<br><br>
+
+#### 🛒 장바구니 담기
+<img src="https://github.com/user-attachments/assets/c4aa2df4-cc6a-42f6-9ed6-9f7c11082eda">
+<br><br>
+
+#### 💳 주문 관리
+<img src="https://github.com/user-attachments/assets/49521164-27d7-4654-9793-4ca9ed519347">
+<br><br>
 
 ---
 
