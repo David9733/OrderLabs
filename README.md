@@ -155,7 +155,6 @@ Git, GitHub, Figma, Discord
 
 ### Database
 
-데이터베이스 서버를 총 6대로 구성하였습니다. 2대는 Replication, 3대는 Clustering, 나머지 1대는 연산 전용 서버로 운영합니다.
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
@@ -296,6 +295,7 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+
 
 
 
