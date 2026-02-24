@@ -241,7 +241,8 @@ Git, GitHub, Figma, Discord
 
 ## 🤔 기술 선택 이유
 
-### Database
+<details>
+<summary>Database</summary>
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
@@ -249,7 +250,10 @@ Git, GitHub, Figma, Discord
 | **Clustering** | Galera Cluster | 작물 상태·온도·습도·일사량 등 실시간 기상 데이터가 끊기면 자동화 시스템이 오작동할 수 있어, 클러스터링으로 장애를 대비했습니다. |
 | **연산 전용 DB** | Separate DB | 운영 DB에 부하를 주지 않고 분석·집계 작업을 수행하기 위해 별도 DB를 분리했습니다. 시계열 데이터의 반복 집계 쿼리가 운영 서비스 성능에 영향을 주지 않도록 하였습니다. |
 
-### Frontend
+</details>
+
+<details>
+<summary>Frontend</summary>
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
@@ -257,7 +261,10 @@ Git, GitHub, Figma, Discord
 | **상태 관리** | Pinia | Vue 3 공식 권장 상태 관리 라이브러리, Vuex 대비 타입 추론과 코드량 간결 |
 | **배포 전략** | Canary | B2B이지만 판매자·구매자 모두 직관적인 UI가 필요. 새 버전을 일부 사용자(20%)에게 먼저 제공해 오류·반응 확인 후 전면 배포 — 점진적 검증으로 안정적인 업데이트 경험 제공 |
 
-### Backend
+</details>
+
+<details>
+<summary>Backend</summary>
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
@@ -269,7 +276,10 @@ Git, GitHub, Figma, Discord
 | **결제** | PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
 | **배포 전략** | Blue-Green | 주문·결제·재고 등 핵심 비즈니스 로직 담당 — 장애 시 서비스 신뢰도에 직접 영향. 구버전(Blue)·신버전(Green) 동시 운영 후 트래픽을 한 번에 전환해 무중단 배포. 문제 발생 시 즉시 이전 버전으로 롤백 가능 |
 
-### CI/CD
+</details>
+
+<details>
+<summary>CI/CD</summary>
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
@@ -278,7 +288,10 @@ Git, GitHub, Figma, Discord
 | **서버 프로비저닝** | Ansible | 수동 설정 시 서버마다 환경이 달라져 재현성 문제 발생. YAML Playbook으로 다수 노드(마스터·워커)에 동일 설정을 일괄 적용 — 일관성·재사용성·자동화 확보 |
 | **트래픽 라우팅** | Ingress Controller | MetalLB + LoadBalancer만으로는 서비스마다 외부 IP를 별도 할당해야 해 관리 복잡. 경로 기반 라우팅과 Blue-Green·Canary 배포 적용을 위해 필수적으로 도입. 향후 HTTPS 인증 확장도 고려 |
 
-### Infrastructure
+</details>
+
+<details>
+<summary>Infrastructure</summary>
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
@@ -287,6 +300,8 @@ Git, GitHub, Figma, Discord
 | **파일 저장** | AWS S3 | 프로필·농장 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
 | **DB Replication** | MariaDB Master–Slave | 부하 및 장애 대비. Master는 쓰기(주문 생성·상태 변경), Slave는 읽기(상품·재고 조회) 트래픽 분산 |
 | **DB 인스턴스** | AWS RDS for MariaDB | 관리형 DB로 운영 부담 절감. 향후 도메인별 MSA 전환 시 인스턴스 분리·독립 확장 가능성 확보 |
+
+</details>
 
 ---
 
@@ -372,13 +387,13 @@ npm run serve
 
 ## 📎 참고자료
 
-<a href="https://docs.google.com/spreadsheets/d/1XSZN87etTnIHmDfupnch9-_gnz6C2W93tIQPNkhwSUY/edit?gid=1400486362#gid=1400486362" target="_blank">🔗 요구사항 명세서 바로가기</a>
+<a href="https://docs.google.com/spreadsheets/d/1XSZN87etTnIHmDfupnch9-_gnz6C2W93tIQPNkhwSUY/edit?gid=1400486362#gid=1400486362" target="_blank">요구사항 명세서 바로가기</a>
 
 <details>
-<summary>📐 ERD 보기</summary>
+<summary>ERD 보기</summary>
 
 ![ERD](./frontend/src/assets/img/readme/03_ERD.png)
 
 </details>
 
-<a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+<a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">Figma 화면 설계 바로가기</a>
