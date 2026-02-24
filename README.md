@@ -27,7 +27,7 @@
 
 | <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/96688099?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/195714592?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/92301360?v=4" width="100" height="100"/> | <img src="https://avatars.githubusercontent.com/u/201225844?v=4" width="100" height="100"/> |
 | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
-|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/miyad927)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
+|                 🦊 **양승우**<br/>[@atimaby28](https://github.com/atimaby28)                 |                🐻 **이시욱**<br/>[@David9733](https://github.com/David9733)                |                 🦎 **구창모**<br/>[@kucha240](https://github.com/kucha240)                  |                🐰 **유현경**<br/>[@gaangstar](https://github.com/gaangstar)                |                  🐱 **윤소민**<br/>[@somminn](https://github.com/somminn)                   |
 
 </div>
 
@@ -74,13 +74,13 @@
 
 ## ✨ 주요 기능
 
--  생육·기상 데이터 기반 주문 가능 여부 판단
--  농장·작물 등록 및 재고 관리
--  장바구니·주문·결제 (Portone 연동)
--  생산량 예측 (기상 데이터 유사도 매칭)
--  카카오 OAuth2 로그인
--  WebSocket 채팅, 푸시 알림
--  판매량 조회, 대시보드
+- 생육·기상 데이터 기반 주문 가능 여부 판단
+- 농장·작물 등록 및 재고 관리
+- 장바구니·주문·결제 (Portone 연동)
+- 생산량 예측 (기상 데이터 유사도 매칭)
+- 카카오 OAuth2 로그인
+- WebSocket 채팅, 푸시 알림
+- 판매량 조회, 대시보드
 
 ---
 
@@ -382,22 +382,3 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
