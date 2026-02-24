@@ -81,6 +81,15 @@
 
 ---
 
+## 🔄 사용자 흐름
+
+| 역할 | 예상 흐름 |
+|------|-----------|
+| 🌾 **농부 (판매자)** | 농장 등록 ➡️ 생물 등록 ➡️ 재고 관리에서 확인 |
+| 🛒 **구매자** | 상품 검색 ➡️ 상품 목록 확인 ➡️ 주문 ➡️ 장바구니 ➡️ 결제 |
+
+---
+
 ## 🛠️ 기술 스택
 
 **Backend**
@@ -104,6 +113,7 @@ Git, GitHub, Figma, Discord
 
 <div>
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
+  <img src="https://img.shields.io/badge/Spring%20Security-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white">
   <img src="https://img.shields.io/badge/Java%2017-007396?style=for-the-badge&logo=openjdk&logoColor=white">
   <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
   <img src="https://img.shields.io/badge/PINIA-FFE801?style=for-the-badge">
@@ -125,6 +135,15 @@ Git, GitHub, Figma, Discord
 ## 🗄️ DB 아키텍처
 
 ![DB 아키텍처](./frontend/src/assets/img/readme/04_Architecture.png)
+
+---
+
+## ⚾ Front/Backend 아키텍처
+<br>
+
+![시스템 아키텍처](https://github.com/user-attachments/assets/1494b5ae-def8-4651-9860-0d43d639791e)
+
+<br><br>
 
 ---
 
