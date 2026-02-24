@@ -234,8 +234,8 @@ Git, GitHub, Figma, Discord
 
 | 구분 | 흐름 | 배포 전략 |
 |------|------|-----------|
-| **Frontend** | GitHub Push → Jenkins (Git Clone → npm build → Kaniko 이미지 빌드 → Docker Hub Push → k8s 배포) | **Canary** — 20% 트래픽으로 먼저 검증 후 전체 배포. 문제 시 즉시 롤백 |
-| **Backend** | GitHub Push → Jenkins (Git Clone → Gradle build → Kaniko 이미지 빌드 → Docker Hub Push → k8s 배포) | **Blue-Green** — 구버전(Blue)·신버전(Green) 동시 운영 후 전환. 문제 시 즉시 롤백 |
+| **Frontend** | GitHub Push → Jenkins (Git Clone → npm build → Kaniko 이미지 빌드 → Docker Hub Push → k8s 배포) | **Canary** : 20% 트래픽으로 먼저 검증 후 전체 배포. 문제 시 즉시 롤백 |
+| **Backend** | GitHub Push → Jenkins (Git Clone → Gradle build → Kaniko 이미지 빌드 → Docker Hub Push → k8s 배포) | **Blue-Green** : 구버전(Blue)·신버전(Green) 동시 운영 후 전환. 문제 시 즉시 롤백 |
 
 ---
 
@@ -296,7 +296,7 @@ Git, GitHub, Figma, Discord
 | 구분 | 선택 | 이유 |
 |------|------|------|
 | **웹 서버** | Nginx (EC2) | AWS EC2에서 운영. 다중 WAS 구성 시 요청 라우팅과 부하 분산 담당 |
-| **WAS** | Spring Boot × 2 (모놀리식) | 백엔드 서버 2대 구성으로 한 대 장애 시에도 나머지가 즉시 트래픽 처리 — 주문·결제 안정성 확보 |
+| **WAS** | Spring Boot × 2 (모놀리식) | 백엔드 서버 2대 구성으로 한 대 장애 시에도 나머지가 즉시 트래픽 처리 주문·결제 안정성 확보 |
 | **파일 저장** | AWS S3 | 프로필·농장 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
 | **DB Replication** | MariaDB Master–Slave | 부하 및 장애 대비. Master는 쓰기(주문 생성·상태 변경), Slave는 읽기(상품·재고 조회) 트래픽 분산 |
 | **DB 인스턴스** | AWS RDS for MariaDB | 관리형 DB로 운영 부담 절감. 향후 도메인별 MSA 전환 시 인스턴스 분리·독립 확장 가능성 확보 |
