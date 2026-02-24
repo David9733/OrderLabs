@@ -332,7 +332,7 @@ Git, GitHub, Figma, Discord
 
 ### Database
 
-- **SQL 성능 개선 (선행 팀 프로젝트)**: JMeter로 DB에 직접 부하를 가하고 Prometheus·Grafana로 양상을 관찰했습니다. 쿼리 구조 변경(JOIN → Subquery, 0.063s → 0.047s)과 Index 적용(2.57ms → 0.255ms)으로 응답 속도를 개선했습니다.
+- **SQL 성능 개선**: JMeter로 DB에 직접 부하를 가하고 Prometheus·Grafana로 양상을 관찰했습니다. 쿼리 구조 변경(JOIN → Subquery, 0.063s → 0.047s)과 Index 적용(2.57ms → 0.255ms)으로 응답 속도를 개선했습니다.
 
 ### Frontend
 
@@ -394,6 +394,7 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+
 
 
 
