@@ -16,7 +16,7 @@
 |------|------|
 | **기간** | 2025.06 ~ 2025.09 |
 | **인원** | 5명 |
-| **내 역할** | DB 설계(ERD/요구사항), 프론트엔드 주문 UI · UI 품질 검토, 백엔드 주문 API 구현 · Swagger 문서화, GitHub 브랜치 관리 |
+| **내 역할** | DB 설계(ERD/요구사항), Frontend 주문 UI · UI 품질 검토, Backend 주문 API 구현 · Swagger 문서화, GitHub 브랜치 관리 |
 | **핵심기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
 
 ---
@@ -245,6 +245,7 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+
 
 
 
