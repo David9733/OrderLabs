@@ -70,30 +70,6 @@
 
 - GitHub 브랜치 관리 및 PR/merge 검토로 충돌 예방 프로세스 수립
 
----
-
-## 🧩 요구 사항 명세서 바로가기
-
-  <a href="https://docs.google.com/spreadsheets/d/1XSZN87etTnIHmDfupnch9-_gnz6C2W93tIQPNkhwSUY/edit?gid=1400486362#gid=1400486362" target="_blank">
-    🔗 요구사항 명세서 바로가기
-  </a>
-
----
-
-## 🖥️ 화면 설계서
-
-  <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">
-    🔗 Figma 화면 설계 바로가기
-  </a>
-
----
-
-## 📐 ERD
-
-![ERD](./frontend/src/assets/img/readme/03_ERD.png)
-
----
-
 ## ✨ 주요 기능
 
 -  생육·기상 데이터 기반 주문 가능 여부 판단
@@ -259,6 +235,21 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
+---
+
+## 📎 참고자료
+
+<a href="https://docs.google.com/spreadsheets/d/1XSZN87etTnIHmDfupnch9-_gnz6C2W93tIQPNkhwSUY/edit?gid=1400486362#gid=1400486362" target="_blank">🔗 요구사항 명세서 바로가기</a>
+
+<details>
+<summary>📐 ERD 보기</summary>
+
+![ERD](./frontend/src/assets/img/readme/03_ERD.png)
+
+</details>
+
+<a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
 
 
 
