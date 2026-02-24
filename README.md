@@ -17,7 +17,7 @@
 | **기간** | 2025.06 ~ 2025.09 |
 | **인원** | 5명 |
 | **내 역할** | DB 설계(ERD/요구사항), 프론트엔드 주문 UI · UI 품질 검토, 백엔드 주문 API 구현 · Swagger 문서화, GitHub 브랜치 관리 |
-| **핵심 기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
+| **핵심기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
 
 ---
 
@@ -40,7 +40,7 @@
 농·수산물의 생육 상태와 생물 건강 데이터를 기반으로 주문 가능 여부를 자동 판단·관리하는 B2B 스마트 주문 플랫폼입니다.
 
 - **기존 방식**: 재고 기반 판매
-- **본 서비스**: 공공 데이터(기상정보, 생육 센서 등)와 실시간 생물 정보(성장률, 건강도)를 분석해 주문·배송 시점 예측 및 자동 제어
+- **본 서비스**: 공공 데이터(기상정보, 생육 센서)와 생물 정보(성장률, 건강도)를 분석해 주문·배송 시점 예측 및 자동 제어
 - **효과**: 생산자는 재고 과잉·무리한 주문 방지, 소비자는 신선한 상품과 정확한 일정 제공
 
 ---
@@ -260,6 +260,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
