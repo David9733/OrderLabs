@@ -81,6 +81,14 @@
 
 ---
 
+## 🖥️ 화면 설계서
+
+  <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">
+    🔗 Figma 화면 설계 바로가기
+  </a>
+
+---
+
 ## 📐 ERD
 
 ![ERD](./frontend/src/assets/img/readme/03_ERD.png)
@@ -96,6 +104,17 @@
 -  카카오 OAuth2 로그인
 -  WebSocket 채팅, 푸시 알림
 -  판매량 조회, 대시보드
+
+---
+
+## 🎬 화면 시연
+
+### 🛒 주문자
+
+#### - 주문관리 시연
+<br>
+<img src="https://github.com/user-attachments/assets/1c5aab15-2815-4f1f-8ad0-7f042afa14e5">
+<br>
 
 ---
 
