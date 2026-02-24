@@ -54,7 +54,7 @@
 
 ### 2단계 · Frontend
 
-- Argon Dashboard 2 템플릿 선정 및 커스터마이징으로 UI 초기 구조 구축
+- 템플릿 선정 및 커스터마이징으로 UI 초기 구조 구축
 - Figma 디자인 작업
 - 기능별 시나리오 테스트 및 오류 검토
 - 주문 관련 화면(주문 생성·조회·수정·완료) 구현
@@ -260,6 +260,7 @@ npm run serve
 1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
+
 
 
 
