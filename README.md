@@ -127,9 +127,7 @@
 오차율_기온   = |현재 기온   - 기준 기온  | / |기준 기온|
 오차율_습도   = |현재 습도   - 기준 습도  | / 기준 습도
 
-유사도 점수 = (오차율_일사량 × 0.4)
-            + (오차율_기온   × 0.4)
-            + (오차율_습도   × 0.2)
+유사도 점수 = (오차율_일사량 × 0.4)+(오차율_기온   × 0.4)+(오차율_습도   × 0.2)
 ```
 
 | 항목 | 가중치 | 선택 이유 |
@@ -173,7 +171,6 @@
 재고 ≤ 0  →  SaleStatus = UNAVAILABLE (주문 불가)
 ```
 
-관련 코드: `PredictService.predictYield()`, `InventoryService.updateSaleStatus()`
 
 ---
 
@@ -401,6 +398,7 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+
 
 
 
