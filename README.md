@@ -4,7 +4,7 @@
 <br>
 
 
-##  한 줄 소개
+## 한 줄 소개
 
 생육 데이터와 기상 정보를 활용해 농·수산물의 주문 가능 여부를 자동 판단하는 스마트 주문 관리 플랫폼
 
@@ -70,6 +70,8 @@
 - README 작성 및 구조 정리
 - 기능 시연 영상 촬영 및 정리
 
+---
+
 ## ✨ 주요 기능
 
 -  생육·기상 데이터 기반 주문 가능 여부 판단
@@ -117,8 +119,6 @@
 재고 > 0 → AVAILABLE  /  재고 ≤ 0 → UNAVAILABLE
 ```
 
----
-
 ### 유사도 점수 계산
 
 각 과거 기상 데이터와 현재 기상 데이터의 오차율을 구하고, 가중합으로 유사도 점수를 산출합니다.
@@ -140,8 +140,6 @@
 점수가 낮을수록(오차 작을수록) 현재 기상과 유사한 과거 데이터입니다.
 상위 유사 데이터의 실제 수확량 평균을 **기준 yield** 로 사용합니다.
 
----
-
 ### 예상 수확량 계산
 
 ```
@@ -151,8 +149,6 @@
 - `평균오차율`: 선택된 유사 기상 데이터들의 유사도 점수 평균
 - 오차가 클수록 예상 수확량은 보수적으로 감소
 
----
-
 ### 연속 예측 보정 (전날 반영)
 
 단기 예측 값이 하루마다 크게 흔들리는 것을 방지하기 위해 전날 예측값을 30 % 반영합니다.
@@ -160,8 +156,6 @@
 ```
 보정된 예상 수확량 = 오늘 예측값 × 0.7 + 전날 예측값 × 0.3
 ```
-
----
 
 ### 최종 판매 가능 여부 결정
 
@@ -199,7 +193,7 @@ Vue 3.4.19, Pinia 3.0.3, Vue Router 4.3.0, Axios 1.10.0, Chart.js 4.4.1, Bootstr
 MariaDB 10.6.22, MySQL 8.0.42
 
 **Infra**
-Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress
+Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress, Nginx
 
 **모니터링**
 JMeter, Prometheus, Grafana
@@ -217,6 +211,7 @@ Git, GitHub, Figma, Discord
   <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
   <img src="https://img.shields.io/badge/PINIA-FFE801?style=for-the-badge">
   <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white">
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
   <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
   <img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">
   <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white">
@@ -233,7 +228,7 @@ Git, GitHub, Figma, Discord
 
 ---
 
-## ⚾ Front/Backend 아키텍처
+## 🖥️ Front/Backend 아키텍처
 <br>
 
 ![시스템 아키텍처](https://github.com/user-attachments/assets/1494b5ae-def8-4651-9860-0d43d639791e)
