@@ -58,6 +58,9 @@
 - Figma 디자인 작업
 - 기능별 시나리오 테스트 및 오류 검토
 - 주문 관련 화면(주문 생성·조회·수정·완료) 구현
+- Navigation Guards + Pinia 연동으로 저장된 로그인 정보 기반 역할별 첫 화면 자동 이동 구현 (정보 없을 시 로그인 화면으로 리다이렉트)
+- 로그인 시 이메일 형식과 회원 유형만 입력하면 다음 화면으로 진행되는 흐름 구현
+- **아이디어 제안**: EncryptStorage를 활용한 로그인 사용자 암호화 처리 — 농부(판매자)·구매자 역할별 화면 분리 아이디어 제안
 
 ### 3단계 · Backend
 
@@ -121,13 +124,18 @@ Git, GitHub, Figma, Discord
   <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white">
   <img src="https://img.shields.io/badge/Java%2017-007396?style=for-the-badge&logo=openjdk&logoColor=white">
   <img src="https://img.shields.io/badge/vue.js-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white">
+  <img src="https://img.shields.io/badge/PINIA-FFE801?style=for-the-badge">
   <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=mariadb&logoColor=white">
   <img src="https://img.shields.io/badge/docker-2496ED?style=for-the-badge&logo=docker&logoColor=white">
   <img src="https://img.shields.io/badge/kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white">
   <img src="https://img.shields.io/badge/jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white">
+  <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white">
+  <img src="https://img.shields.io/badge/AWS-242F4B?style=for-the-badge">
   <img src="https://img.shields.io/badge/AWS%20S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white">
   <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white">
   <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  <img src="https://img.shields.io/badge/figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white">
+  <img src="https://img.shields.io/badge/discord-5865F2?style=for-the-badge&logo=discord&logoColor=white">
 </div>
 
 ---
