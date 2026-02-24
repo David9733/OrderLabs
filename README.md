@@ -68,7 +68,6 @@
 ### 4단계 · 문서 관리
 
 - README 작성 및 구조 정리
-- GitHub 위키 페이지 작성
 - 기능 시연 영상 촬영 및 정리
 
 ## ✨ 주요 기능
@@ -400,6 +399,7 @@ npm run serve
 </details>
 
 <a href="https://www.figma.com/design/b62xD9jx6Nby2e4xa7ylJZ/%EC%A0%9C%EB%AA%A9-%EC%97%86%EC%9D%8C?node-id=0-1&t=51nZR2QNFvuL1JE2-1" target="_blank">🔗 Figma 화면 설계 바로가기</a>
+
 
 
 
