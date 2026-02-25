@@ -356,13 +356,7 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 ### Backend
 
-- **PortOne 결제 금액 검증 불일치**
-  프론트에서 전달된 결제 금액과 PortOne 서버에서 조회한 실제 결제 금액이 불일치하는 경우 결제가 완료된 것처럼 처리될 수 있는 문제를 발견했습니다.
-  PaymentService.validation에서 PortOne API로 금액을 재조회한 뒤 주문 금액과 대조하는 서버 측 검증 로직을 추가하여 해결했습니다.
-
-- **Spring Security 필터 순서 문제**
-  JWT 인증 필터(JwtAuthFilter)와 Kakao OAuth2 필터가 충돌하여 일부 엔드포인트에서 인증이 정상적으로 동작하지 않는 문제가 발생했습니다.
-  Security 필터 체인의 순서를 명시적으로 지정하고 /api/login 경로는 별도 LoginFilter로 분리하여 해결했습니다.
+- **백엔드 모듈 통합 충돌**: 주문 CRUD를 구현한 뒤 결제 모듈과 병합하는 과정에서 팀원과 설계 방향이 달라 코드 구조가 크게 달랐습니다. 일정 내 완성을 우선해 내 구현을 결제 흐름에 맞춰 재편하는 방향으로 조율했고, 이 과정에서 개발 초기에 인터페이스와 데이터 흐름을 팀 단위로 합의하는 것의 중요성을 체감했습니다.
 
 ### Documentation
 
