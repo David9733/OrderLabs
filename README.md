@@ -347,7 +347,7 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 ### Database
 
-- **SQL 성능 개선** : JMeter로 DB에 직접 부하를 가하고 Prometheus·Grafana로 양상을 관찰했습니다. 쿼리 구조 변경(JOIN → Subquery, 0.063s → 0.047s)과 Index 적용(2.57ms → 0.255ms)으로 응답 속도를 개선했습니다.
+- **SQL 성능 개선** : JMeter로 DB에 직접 부하를 가하고 Prometheus·Grafana로 양상을 관찰했습니다.<br> 쿼리 구조 변경(JOIN → Subquery, 0.063s → 0.047s)과 Index 적용(2.57ms → 0.255ms)으로 응답 속도를 개선했습니다.
 
 ### Frontend
 
