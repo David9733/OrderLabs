@@ -270,10 +270,10 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 | 선택 | 이유 |
 |------|------|
-| Spring Boot 3.5 | Spring Security, Spring Data JPA 등 스프링 생태계 기능을 스타터/자동 설정 기반으로 일관되게 연동할 수 있어 선택 |
-| JWT | 요청마다 토큰을 검증하는 Stateless 인증 방식으로, 서버 세션 공유 없이도 Kubernetes 다중 인스턴스 환경에서 일관된 인증 처리가 가능해 선택 |
-| Kakao OAuth2 | 카카오 소셜 로그인을 도입해 회원가입/로그인 절차를 간소화하고, Spring Security OAuth2 Client를 활용해 인가 코드 기반 OAuth2 로그인 흐름을 구현 |
-| MariaDB | MySQL과의 높은 호환성을 바탕으로 학습/개발 진입장벽이 낮고, 오픈소스 기반으로 비용 부담 없이 관계형 데이터 관리를 구현하기 위해 선택 |
+| Spring Boot 3.5 | Spring Security, Spring Data JPA 등 스프링 생태계 기능을 스타터/자동 설정 기반으로 일관되게 <br>연동할 수 있어 선택 |
+| JWT | 요청마다 토큰을 검증하는 Stateless 인증 방식으로, 서버 세션 공유 없이도 Kubernetes 다중 인스턴스 <br>환경에서 일관된 인증 처리가 가능해 선택 |
+| Kakao OAuth2 | 카카오 소셜 로그인을 도입해 회원가입/로그인 절차를 간소화하고, Spring Security OAuth2 Client를 <br>활용해 인가 코드 기반 OAuth2 로그인 흐름을 구현 |
+| MariaDB | MySQL과의 높은 호환성을 바탕으로 학습/개발 진입장벽이 낮고, 오픈소스 기반으로 비용 부담 없이 <br>관계형 데이터 관리를 구현하기 위해 선택 |
 | QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
 | PortOne | 국내 PG 연동을 공통 SDK로 구현해 결제 기능 개발 복잡도를 줄이고, 서버 측 결제 금액 검증 API를 통해 결제 신뢰성을 높이기 위해 선택 |
 | Blue-Green | 주문·결제·재고 등 핵심 비즈니스 로직 담당, 장애 시 서비스 신뢰도에 직접 영향. 구버전(Blue)·신버전(Green) 동시 운영 후 트래픽을 한 번에 전환해 무중단 배포. 문제 발생 시 즉시 이전 버전으로 롤백 가능 |
