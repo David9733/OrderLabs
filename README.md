@@ -287,7 +287,7 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 |------|------|
 | Jenkins | GitHub Actions 대비 자체 서버 기반으로 빌드 자원을 직접 제어 가능. 프론트·백엔드를 독립 에이전트로 분리 운영하는 프로젝트 특성에 적합. 다양한 브랜치 전략·품질 관리 도구 통합이 용이하고 오픈소스 생태계가 풍부해 선택 |
 | Kaniko | Docker in Docker 방식은 보안 취약(privileged 권한)·캐시 공유 불가·성능 저하 문제가 있어 배제. Kaniko는 Docker 데몬 없이 Kubernetes 내부에서 안전하게 이미지 빌드 가능 |
-| Ansible | 수동 설정 시 서버마다 환경이 달라져 재현성 문제 발생. YAML Playbook으로 다수 노드(마스터·워커)에 동일 설정을 일괄 적용 — 일관성·재사용성·자동화 확보 |
+| Ansible | 수동 설정 시 서버마다 환경이 달라져 재현성 문제 발생. YAML Playbook으로 다수 노드(마스터·워커)에 동일 설정을 일괄 적용, 일관성·재사용성·자동화 확보 |
 | Ingress Controller | MetalLB + LoadBalancer만으로는 서비스마다 외부 IP를 별도 할당해야 해 관리 복잡. 경로 기반 라우팅과 Blue-Green·Canary 배포 적용을 위해 필수적으로 도입. 향후 HTTPS 인증 확장도 고려 |
 
 </details>
