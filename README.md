@@ -293,7 +293,7 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 </details>
 
 <details>
-<summary>Infrastructure</summary>
+<summary>Infra</summary>
 
 | 구분 | 선택 | 이유 |
 |------|------|------|
