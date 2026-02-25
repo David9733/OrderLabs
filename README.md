@@ -299,8 +299,8 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 | 선택 | 이유 |
 |------|------|
 | Nginx (EC2) | AWS EC2에서 운영. 다중 WAS 구성 시 요청 라우팅과 부하 분산 담당 |
-| Spring Boot × 2 (모놀리식,WAS) | 백엔드 서버 2대 구성으로 한 대 장애 시에도 나머지가 즉시 트래픽 처리 주문·결제 안정성 확보 |
-| AWS S3 | 프로필·농장 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
+| Spring Boot × 2<br> (모놀리식,WAS) | 백엔드 서버 2대 구성으로 한 대 장애 시에도 나머지가 즉시 트래픽 처리 주문·결제 안정성 확보 |
+| AWS S3 | 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
 | MariaDB Master–Slave(Replication) | 부하 및 장애 대비. Master는 쓰기(주문 생성·상태 변경), Slave는 읽기(상품·재고 조회) 트래픽 분산 |
 | AWS RDS for MariaDB | 관리형 DB로 운영 부담 절감. 향후 도메인별 MSA 전환 시 인스턴스 분리·독립 확장 가능성 확보 |
 
