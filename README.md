@@ -117,7 +117,8 @@
 단위수확량 × 재배면적 → 재고 산정
         │
         ▼
-재고 > 0 → AVAILABLE / 재고 ≤ 0 → UNAVAILABLE
+재고 > 0 → AVAILABLE 
+재고 ≤ 0 → UNAVAILABLE
 ```
 
 ### 유사도 점수 계산
