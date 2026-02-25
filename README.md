@@ -270,13 +270,13 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 | 선택 | 이유 |
 |------|------|
-| Spring Boot 3.5 | Spring Security·JPA·WebSocket 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
+| Spring Boot 3.5 | Spring Security·JPA 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
 | JWT | Stateless 구조로 서버 세션 부담 없이 Kubernetes 다중 인스턴스 환경에서 인증 처리 가능 |
 | Kakao OAuth2 | 별도 회원가입 없이 간편 로그인 제공, Spring Security OAuth2 Client로 연동 |
-| MariaDB | MySQL 호환 오픈소스, 팀 학습 경험 보유 |
+| MariaDB | MySQL 호환 오픈소스 |
 | QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
 | PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
-| Blue-Green | 주문·결제·재고 등 핵심 비즈니스 로직 담당 — 장애 시 서비스 신뢰도에 직접 영향. 구버전(Blue)·신버전(Green) 동시 운영 후 트래픽을 한 번에 전환해 무중단 배포. 문제 발생 시 즉시 이전 버전으로 롤백 가능 |
+| Blue-Green | 주문·결제·재고 등 핵심 비즈니스 로직 담당, 장애 시 서비스 신뢰도에 직접 영향. 구버전(Blue)·신버전(Green) 동시 운영 후 트래픽을 한 번에 전환해 무중단 배포. 문제 발생 시 즉시 이전 버전으로 롤백 가능 |
 
 </details>
 
