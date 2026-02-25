@@ -311,11 +311,11 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 | 함수/메서드 | 위치 | 설명 |
 |-------------|------|------|
-| `createOrder` | OrderService | 장바구니 ID 목록으로 주문서 생성, 사용자 검증 및 총 가격 계산 |
-| `orderConfirm` | OrderService | 주문 확정, 주문번호 생성 후 DB 저장 |
-| `addCart` | CartService | 장바구니 담기, 기존 상품이면 수량·가격 갱신 |
-| `allCarts` | CartService | 사용자별 장바구니 목록 조회 |
-| `validation` | PaymentService | PortOne 결제 검증, 금액 대조 후 결제 내역 저장 |
+| createOrder | OrderService | 장바구니 ID 목록으로 주문서 생성, 사용자 검증 및 총 가격 계산 |
+| orderConfirm | OrderService | 주문 확정, 주문번호 생성 후 DB 저장 |
+| addCart | CartService | 장바구니 담기, 기존 상품이면 수량·가격 갱신 |
+| allCarts | CartService | 사용자별 장바구니 목록 조회 |
+| validation | PaymentService | PortOne 결제 검증, 금액 대조 후 결제 내역 저장 |
 
 ### 🛒 주문자
 
@@ -349,11 +349,11 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 - **PortOne 결제 금액 검증 불일치**
   프론트에서 전달된 결제 금액과 PortOne 서버에서 조회한 실제 결제 금액이 불일치하는 경우 결제가 완료된 것처럼 처리될 수 있는 문제를 발견했습니다.
-  `PaymentService.validation`에서 PortOne API로 금액을 재조회한 뒤 주문 금액과 대조하는 서버 측 검증 로직을 추가하여 해결했습니다.
+  PaymentService.validation에서 PortOne API로 금액을 재조회한 뒤 주문 금액과 대조하는 서버 측 검증 로직을 추가하여 해결했습니다.
 
 - **Spring Security 필터 순서 문제**
-  JWT 인증 필터(`JwtAuthFilter`)와 Kakao OAuth2 필터가 충돌하여 일부 엔드포인트에서 인증이 정상적으로 동작하지 않는 문제가 발생했습니다.
-  Security 필터 체인의 순서를 명시적으로 지정하고 `/api/login` 경로는 별도 `LoginFilter`로 분리하여 해결했습니다.
+  JWT 인증 필터(JwtAuthFilter)와 Kakao OAuth2 필터가 충돌하여 일부 엔드포인트에서 인증이 정상적으로 동작하지 않는 문제가 발생했습니다.
+  Security 필터 체인의 순서를 명시적으로 지정하고 /api/login 경로는 별도 LoginFilter로 분리하여 해결했습니다.
 
 ### 협업
 
@@ -381,7 +381,7 @@ npm run serve
 
 ### CI/CD 배포 테스트
 
-1. Jenkins에 `pipelineFrontend.yaml`, `pipelineBackend.yaml` 파이프라인 등록
+1. Jenkins에 pipelineFrontend.yaml, pipelineBackend.yaml 파이프라인 등록
 2. GitHub WebHook 설정 (Push/Merge 시 트리거)
 3. main 브랜치 Push 후 파이프라인 자동 실행 확인
 
