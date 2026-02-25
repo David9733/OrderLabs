@@ -175,7 +175,7 @@
 ## 🛠️ 기술 스택
 
 **Backend** : 
-Spring Boot 3.5.4, Java 17, Spring Security, JWT 0.11.5, OAuth2(Kakao), QueryDSL 5.0.0, WebSocket, AWS S3, SpringDoc 2.8.4, PortOne SDK 0.19.2, Web Push 5.1.1
+Spring Boot 3.5.4, Java 17, Spring Security, JWT 0.11.5, OAuth2(Kakao), Spring Data JPA, QueryDSL 5.0.0, AWS S3, SpringDoc 2.8.4, PortOne SDK 0.19.2, Web Push 5.1.1
 
 **Frontend** : 
 Vue 3.4.19, Pinia 3.0.3, Vue Router 4.3.0, Axios 1.10.0, Chart.js 4.4.1, Bootstrap 5.3.3
@@ -184,7 +184,7 @@ Vue 3.4.19, Pinia 3.0.3, Vue Router 4.3.0, Axios 1.10.0, Chart.js 4.4.1, Bootstr
 MariaDB 10.6.22, MySQL 8.0.42
 
 **Infra** :
-Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress, Nginx
+Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress, Nginx, AWS(EC2, RDS, S3)
 
 **Monitoring** : 
 JMeter, Prometheus, Grafana
