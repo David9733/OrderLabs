@@ -285,6 +285,7 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 
 | 선택 | 이유 |
 |------|------|
+| Kubernetes | 서비스 인스턴스를 여러 개로 운영하면서 배포 자동화, 확장, 장애 복구를 체계적으로 관리해 운영 안정성을 높이기 위해 선택 |
 | Jenkins | GitHub Actions 대비 자체 서버 기반으로 빌드 자원을 직접 제어 가능. 프론트·백엔드를 독립 에이전트로 분리 운영하는 프로젝트 특성에 적합. 다양한 브랜치 전략·품질 관리 도구 통합이 용이하고 오픈소스 생태계가 풍부해 선택 |
 | Kaniko | Docker in Docker 방식은 보안 취약(privileged 권한)·캐시 공유 불가·성능 저하 문제가 있어 배제. Kaniko는 Docker 데몬 없이 Kubernetes 내부에서 안전하게 이미지 빌드 가능 |
 | Ansible | 수동 설정 시 서버마다 환경이 달라져 재현성 문제 발생. YAML Playbook으로 다수 노드(마스터·워커)에 동일 설정을 일괄 적용, 일관성·재사용성·자동화 확보 |
@@ -302,6 +303,15 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 | AWS S3 | 프로필·농장 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
 | MariaDB Master–Slave(Replication) | 부하 및 장애 대비. Master는 쓰기(주문 생성·상태 변경), Slave는 읽기(상품·재고 조회) 트래픽 분산 |
 | AWS RDS for MariaDB | 관리형 DB로 운영 부담 절감. 향후 도메인별 MSA 전환 시 인스턴스 분리·독립 확장 가능성 확보 |
+
+</details>
+
+<details>
+<summary>Monitoring</summary>
+
+| 선택 | 이유 |
+|------|------|
+| Prometheus / Grafana | Prometheus로 메트릭을 수집하고 Grafana 대시보드로 시각화해, 서비스 상태 점검 및 장애 징후 모니터링을 위해 사용 |
 
 </details>
 
