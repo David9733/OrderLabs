@@ -16,7 +16,7 @@
 |------|------|
 | **기간** | 2025.06 ~ 2025.09 |
 | **인원** | 5명 |
-| **내 역할** | DB 설계(ERD/요구사항), Frontend 주문 UI · UI 품질 검토, Backend 주문 API 구현 · Swagger 문서화, GitHub 문서 |
+| **내 역할** | DB 설계(ERD/요구사항), 주문 UI · UI 품질 개선, 주문 API 구현 · Swagger 문서화, GitHub 문서 |
 | **핵심 기술** | Spring Boot, Vue 3, MariaDB, Docker, Kubernetes, Jenkins |
 
 ---
