@@ -186,10 +186,10 @@ MariaDB 10.6.22, MySQL 8.0.42
 **Infra**
 Docker, Kubernetes, Jenkins, Kaniko, Ansible, Ingress, Nginx
 
-**모니터링**
+**Monitoring**
 JMeter, Prometheus, Grafana
 
-**협업**
+**Collaboration**
 Git, GitHub, Figma, Discord
 
 
