@@ -246,62 +246,62 @@ Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 Web
 <details>
 <summary>Database</summary>
 
-| 구분 | 선택 | 이유 |
-|------|------|------|
-| **Replication** | Replication(Master-Slave) | 운영 서버의 단일 DB 장애 시 전체 서비스 중단을 막기 위해 데이터 복제(Data Replication)를 적용했습니다. Master 장애 시 Slave로 자동 전환(Failover)이 가능하도록 구성하여 서비스 가용성과 안정성을 최우선으로 하였습니다. |
-| **Clustering** | Clustering | 작물 상태·온도·습도·일사량 등 실시간 기상 데이터가 끊기면 자동화 시스템이 오작동할 수 있어, 클러스터링으로 장애를 대비했습니다. |
-| **연산 전용 DB** | Separate DB | 운영 DB에 부하를 주지 않고 분석·집계 작업을 수행하기 위해 별도 DB를 분리했습니다. 시계열 데이터의 반복 집계 쿼리가 운영 서비스 성능에 영향을 주지 않도록 하였습니다. |
+| 선택 | 이유 |
+|------|------|
+| Replication(Master-Slave) | 운영 서버의 단일 DB 장애 시 전체 서비스 중단을 막기 위해 데이터 복제(Data Replication)를 적용했습니다. Master 장애 시 Slave로 자동 전환(Failover)이 가능하도록 구성하여 서비스 가용성과 안정성을 최우선으로 하였습니다. |
+| Clustering | 작물 상태·온도·습도·일사량 등 실시간 기상 데이터가 끊기면 자동화 시스템이 오작동할 수 있어, 클러스터링으로 장애를 대비했습니다. |
+| Separate DB | 운영 DB에 부하를 주지 않고 분석·집계 작업을 수행하기 위해 별도 DB를 분리했습니다. 시계열 데이터의 반복 집계 쿼리가 운영 서비스 성능에 영향을 주지 않도록 하였습니다. |
 
 </details>
 
 <details>
 <summary>Frontend</summary>
 
-| 구분 | 선택 | 이유 |
-|------|------|------|
-| **프레임워크** | Vue 3 | Composition API로 컴포넌트 재사용성 향상, 팀원 학습 경험 고려 |
-| **상태 관리** | Pinia | Vue 3 공식 권장 상태 관리 라이브러리, Vuex 대비 타입 추론과 코드량 간결 |
-| **배포 전략** | Canary | B2B이지만 판매자·구매자 모두 직관적인 UI가 필요. 새 버전을 일부 사용자(20%)에게 먼저 제공해 오류·반응 확인 후 전면 배포 — 점진적 검증으로 안정적인 업데이트 경험 제공 |
+| 선택 | 이유 |
+|------|------|
+| Vue 3 | Composition API로 컴포넌트 재사용성 향상, 팀원 학습 경험 고려 |
+| Pinia | Vue 3 공식 권장 상태 관리 라이브러리, Vuex 대비 타입 추론과 코드량 간결 |
+| Canary | B2B이지만 판매자·구매자 모두 직관적인 UI가 필요. 새 버전을 일부 사용자(20%)에게 먼저 제공해 오류·반응 확인 후 전면 배포 — 점진적 검증으로 안정적인 업데이트 경험 제공 |
 
 </details>
 
 <details>
 <summary>Backend</summary>
 
-| 구분 | 선택 | 이유 |
-|------|------|------|
-| **프레임워크** | Spring Boot 3.5 | Spring Security·JPA·WebSocket 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
-| **인증** | JWT | Stateless 구조로 서버 세션 부담 없이 Kubernetes 다중 인스턴스 환경에서 인증 처리 가능 |
-| **소셜 로그인** | Kakao OAuth2 | 별도 회원가입 없이 간편 로그인 제공, Spring Security OAuth2 Client로 연동 |
-| **DB** | MariaDB | MySQL 호환 오픈소스, 팀 학습 경험 보유 |
-| **ORM / 쿼리** | QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
-| **결제** | PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
-| **배포 전략** | Blue-Green | 주문·결제·재고 등 핵심 비즈니스 로직 담당 — 장애 시 서비스 신뢰도에 직접 영향. 구버전(Blue)·신버전(Green) 동시 운영 후 트래픽을 한 번에 전환해 무중단 배포. 문제 발생 시 즉시 이전 버전으로 롤백 가능 |
+| 선택 | 이유 |
+|------|------|
+| Spring Boot 3.5 | Spring Security·JPA·WebSocket 등 필요한 기능을 일관된 방식으로 통합할 수 있어 선택 |
+| JWT | Stateless 구조로 서버 세션 부담 없이 Kubernetes 다중 인스턴스 환경에서 인증 처리 가능 |
+| Kakao OAuth2 | 별도 회원가입 없이 간편 로그인 제공, Spring Security OAuth2 Client로 연동 |
+| MariaDB | MySQL 호환 오픈소스, 팀 학습 경험 보유 |
+| QueryDSL | 농장·작물 조건 검색 등 동적 쿼리가 필요한 부분에 타입 안전 쿼리 작성 |
+| PortOne | 국내 PG 통합 SDK, 서버 측 결제 금액 검증 API 제공 |
+| Blue-Green | 주문·결제·재고 등 핵심 비즈니스 로직 담당 — 장애 시 서비스 신뢰도에 직접 영향. 구버전(Blue)·신버전(Green) 동시 운영 후 트래픽을 한 번에 전환해 무중단 배포. 문제 발생 시 즉시 이전 버전으로 롤백 가능 |
 
 </details>
 
 <details>
 <summary>CI/CD</summary>
 
-| 구분 | 선택 | 이유 |
-|------|------|------|
-| **빌드 자동화** | Jenkins | GitHub Actions 대비 자체 서버 기반으로 빌드 자원을 직접 제어 가능. 프론트·백엔드를 독립 에이전트로 분리 운영하는 프로젝트 특성에 적합. 다양한 브랜치 전략·품질 관리 도구 통합이 용이하고 오픈소스 생태계가 풍부해 선택 |
-| **이미지 빌드** | Kaniko | Docker in Docker 방식은 보안 취약(privileged 권한)·캐시 공유 불가·성능 저하 문제가 있어 배제. Kaniko는 Docker 데몬 없이 Kubernetes 내부에서 안전하게 이미지 빌드 가능 |
-| **서버 프로비저닝** | Ansible | 수동 설정 시 서버마다 환경이 달라져 재현성 문제 발생. YAML Playbook으로 다수 노드(마스터·워커)에 동일 설정을 일괄 적용 — 일관성·재사용성·자동화 확보 |
-| **트래픽 라우팅** | Ingress Controller | MetalLB + LoadBalancer만으로는 서비스마다 외부 IP를 별도 할당해야 해 관리 복잡. 경로 기반 라우팅과 Blue-Green·Canary 배포 적용을 위해 필수적으로 도입. 향후 HTTPS 인증 확장도 고려 |
+| 선택 | 이유 |
+|------|------|
+| Jenkins | GitHub Actions 대비 자체 서버 기반으로 빌드 자원을 직접 제어 가능. 프론트·백엔드를 독립 에이전트로 분리 운영하는 프로젝트 특성에 적합. 다양한 브랜치 전략·품질 관리 도구 통합이 용이하고 오픈소스 생태계가 풍부해 선택 |
+| Kaniko | Docker in Docker 방식은 보안 취약(privileged 권한)·캐시 공유 불가·성능 저하 문제가 있어 배제. Kaniko는 Docker 데몬 없이 Kubernetes 내부에서 안전하게 이미지 빌드 가능 |
+| Ansible | 수동 설정 시 서버마다 환경이 달라져 재현성 문제 발생. YAML Playbook으로 다수 노드(마스터·워커)에 동일 설정을 일괄 적용 — 일관성·재사용성·자동화 확보 |
+| Ingress Controller | MetalLB + LoadBalancer만으로는 서비스마다 외부 IP를 별도 할당해야 해 관리 복잡. 경로 기반 라우팅과 Blue-Green·Canary 배포 적용을 위해 필수적으로 도입. 향후 HTTPS 인증 확장도 고려 |
 
 </details>
 
 <details>
 <summary>Infra</summary>
 
-| 구분 | 선택 | 이유 |
-|------|------|------|
-| **웹 서버** | Nginx (EC2) | AWS EC2에서 운영. 다중 WAS 구성 시 요청 라우팅과 부하 분산 담당 |
-| **WAS** | Spring Boot × 2 (모놀리식,WAS) | 백엔드 서버 2대 구성으로 한 대 장애 시에도 나머지가 즉시 트래픽 처리 주문·결제 안정성 확보 |
-| **파일 저장** | AWS S3 | 프로필·농장 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
-| **DB Replication** | MariaDB Master–Slave(Replication) | 부하 및 장애 대비. Master는 쓰기(주문 생성·상태 변경), Slave는 읽기(상품·재고 조회) 트래픽 분산 |
-| **DB 인스턴스** | AWS RDS for MariaDB | 관리형 DB로 운영 부담 절감. 향후 도메인별 MSA 전환 시 인스턴스 분리·독립 확장 가능성 확보 |
+| 선택 | 이유 |
+|------|------|
+| Nginx (EC2) | AWS EC2에서 운영. 다중 WAS 구성 시 요청 라우팅과 부하 분산 담당 |
+| Spring Boot × 2 (모놀리식,WAS) | 백엔드 서버 2대 구성으로 한 대 장애 시에도 나머지가 즉시 트래픽 처리 주문·결제 안정성 확보 |
+| AWS S3 | 프로필·농장 이미지 등 대용량 파일 저장. DB에는 경로·메타데이터만 보관해 DB I/O 절감. Presigned URL로 WAS 부하 최소화 |
+| MariaDB Master–Slave(Replication) | 부하 및 장애 대비. Master는 쓰기(주문 생성·상태 변경), Slave는 읽기(상품·재고 조회) 트래픽 분산 |
+| AWS RDS for MariaDB | 관리형 DB로 운영 부담 절감. 향후 도메인별 MSA 전환 시 인스턴스 분리·독립 확장 가능성 확보 |
 
 </details>
 
