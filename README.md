@@ -232,7 +232,7 @@ Git, GitHub, Figma, Discord
 
 ![CI/CD 아키텍처](https://github.com/user-attachments/assets/64e17f01-a635-470d-aa99-d06da349d345)
 
-> Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 WebHook으로 파이프라인이 자동 트리거됩니다.
+Kubernetes 클러스터 위에 Jenkins를 구축하여 GitHub Push/Merge 시 WebHook으로 파이프라인이 자동 트리거됩니다.
 
 | 구분 | 흐름 | 배포 전략 |
 |------|------|-----------|
